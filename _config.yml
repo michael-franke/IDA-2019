@@ -1,14 +1,17 @@
 # Site
-title:              Moon
-bio:                'Minimal, one column jekyll theme.'
+title:              Introduction to Data Analysis
+bio:                'WS 2019/20'
+semester:           'WS 2019/20'
+lecturer:           'Michael Franke'
 description:        "Moon is a minimal, one column jekyll theme for your blog."
 reading_time:       true
 words_per_minute:   200
-logo:               'assets/img/logo.png'
-background:         'assets/img/placeholder-big.jpg'
+logo:               'assets/img/uni-osnabrueck-logo-no-text.svg'
+background:         'assets/img/data-analysis-background-2.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
 url:                https://taylantatli.github.io/Moon
+baseurl:            'Intro-To-Data-Analysis'
 
 # Jekyll
 permalink:          /:title/

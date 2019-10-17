@@ -8,8 +8,9 @@
 	background: $white;
 	color: $color_shark;
 	&:hover {
-		box-shadow: 0 0 1px 0 rgba($color_shark,0.5);
-		color: $red;
+    box-shadow: 0 0 1px 0 rgba($color_shark,0.5);
+    color: $white;
+		background-color: $uni-red;
 	}
 }
 .social-btn {
@@ -74,7 +75,7 @@
 .title .btn {
     margin: 10px;
     @include font-rem(16);
-    font-weight:300;
+    font-weight:500;
 }
 .post-list {
     .btn {
@@ -120,6 +121,10 @@ img {
 .img-circle {
 	border-radius: 50%;
 	border: 3px solid $white;
+	height: 150px;
+	width: 150px;
+}
+.img-logo {
 	height: 150px;
 	width: 150px;
 }

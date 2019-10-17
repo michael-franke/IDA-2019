@@ -19,10 +19,14 @@
 	> p {
 		text-align: center;
 		font-weight: bold;
+		margin-block-start: 1rem;
+		margin-block-end: 1rem;
 	}
 	> a > p {
 		text-align: center;
 		font-weight: bold;
+		margin-block-start: 1rem;
+		margin-block-end: 1rem;
 	}
 }
 .post-title {
@@ -89,7 +93,7 @@ figcaption {
 
 // links
 a {
-  transition: color .4s;
+  transition: background-color .4s, color .4s;
   color: $color_shark;
   &:link {
   	color: $color_shark;
