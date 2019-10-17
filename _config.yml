@@ -10,7 +10,7 @@ logo:               'assets/img/uni-osnabrueck-logo-no-text.svg'
 background:         'assets/img/data-analysis-background-2.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-url:                https://mviladrichhe.github.io/Intro-To-Data-Analysis/
+url:                https://mviladrichhe.github.io/Intro-To-Data-Analysis
 baseurl:            'Intro-To-Data-Analysis'
 
 # Jekyll
