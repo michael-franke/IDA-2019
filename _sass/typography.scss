@@ -1,7 +1,7 @@
 // content area
 .content {
 	@include font-size(14);
-	padding: 0 2rem;
+	padding: 0 6vw;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased !important;
 	-moz-font-smoothing: antialiased !important;
@@ -32,7 +32,7 @@
 .post-title {
 	text-align: center;
 	font-weight: bold;
-	margin-bottom: 3rem;
+	margin-bottom: 1rem;
 }
 
 // headings
@@ -60,12 +60,18 @@ h3.title a {
 			color: $color_shark;
 			font-weight: bolder;
             &:hover {
-                color: $red;
+                color: $uni-red;
             }
 		}
 		p {
-			font-weight: lighter;
+			margin-block-start: 0;
+			margin-block-end: 0;
+			font-weight: 300;
 			@include font-rem(16);
+
+			&.topic {
+				font-weight: 500;
+			}
 		}
 	}
 }
@@ -102,7 +108,7 @@ a {
   	color: $color_tuatara;
   }
   &:hover {
-  	color: $red;
+  	color: $uni-red;
   }
   &:active {
   	transition: color .3s;

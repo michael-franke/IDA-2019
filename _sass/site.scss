@@ -68,12 +68,16 @@ body {
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
+
+	&.home-header {
+		min-height: 80vh;
+		padding: 3rem;
+	}
 }
 .container {
 	width: 41rem;
 	max-width: 650px;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding: 15px;
 	@include center-block();
 	background-color: $white;
 	color: $color_shark;
@@ -100,13 +104,15 @@ body {
 		padding: 0 1em;
 	}
 }
-.wrapper {
+.wrapper,
+.wrapper-home {
 	width: 75%;
 	max-width: 850px;
 	margin: 4rem auto;
 	background: $white;
 	color: $color_tuatara;
-	padding: 2em;
+	padding: 2vw;
+	padding-top: 1px;
 	border-radius: 3px;
 	box-shadow: 0 0 10px 0 rgba($color_shark,0.3);
 	@include transition(.5s);
@@ -115,6 +121,9 @@ body {
 		padding: 2em 0;
 	    box-shadow: none;
 	}
+}
+.wrapper-home {
+	margin-top: 0;
 }
 #disqus_thread {
 	width: 75%;
@@ -219,4 +228,28 @@ header .entry-meta {
         background-blend-mode: multiply;
         background-position: center center;
     }
+}
+
+.team {
+	justify-content: space-around;
+}
+
+.team-member {
+	margin: 25px;
+	text-align: center;
+
+	> img {
+		margin-bottom: 0.5rem;
+	}
+
+	> p {
+		margin-block-start: 0;
+		margin-block-end: 0;
+	}
+
+	> .member-name {
+		font-weight: 500;
+		font-size: 1rem;
+	}
+	
 }

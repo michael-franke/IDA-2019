@@ -1,0 +1,60 @@
+# Course topics
+
+- title: Preliminaries
+  subtopics:
+    - title: General Introduction
+      url: /general-introduction/
+    - title: Basics of R
+      url: /basics-of-r/
+
+- title: Data
+  subtopics:
+    - title: Kinds of Data
+      url: /kinds-of-data/
+    - title: Summary Statistics
+      url: /summary-statistics/
+    - title: Data Wrangling
+      url: /data-wrangling/
+    - title: Data Plotting
+      url: /data-plotting/
+
+- title: Models And Inferences
+  subtopics:
+    - title: Basics of Probbability Theory
+      url: /basics-of-probability-theory/
+    - title: Two Approaches To Statistical Inference
+      url: /two-approaches-to-statistical-inference/
+    - title: Models
+      url: /models/
+    - title: Parameter Inference
+      url: /parameter-inference/
+    - title: Hypothesis Testing
+      url: /hypothesis-testing/
+    - title: Model Comparison
+      url: /model-comparison/
+    - title: Bayesian Hypothesis Testing
+      url: /bayesian-hypothesis-testing/
+    - title: Model Criticism
+      url: /model-criticism/
+
+- title: Applied (generalized) linear models
+  subtopics:
+    - title: Simple Linear Regression
+      url: /simple-linear-regression/
+    - title: Logistic Regression
+      url: /logistic-regression/
+    - title: Multinomial Regression
+      url: /multinomial-regression/
+    - title: Ordinal Regression
+      url: /ordinal-regression/
+    - title: Hierarchical Regression
+      url: /hierarchical-regression/
+
+- title: Appendix
+  subtopics:
+    - title: Common Probability Distributions
+      url: /common-probability-distributions/
+    - title: Exponential Family and Maximum Entropy
+      url: /exponential-family-and-maximum-entropy/
+    - title: References
+      url: /references/

@@ -39,18 +39,44 @@
 	ul {
 		background: #aaa;
 	}
-	button:after {
+	// button:after {
+	// 	content: '';
+	// 	position: absolute;
+	// 	margin: auto;
+	// 	width: 68%;
+	// 	height: 2.5px;
+	// 	background: $white;
+	// 	top: 0;
+	// 	right: 0;
+	// 	bottom: 0;
+	// 	left: 0;
+	// 	transition: height 0.4s, transform 0.4s;
+	// }
+	.dl-bar,
+	.dl-bar::before,
+	.dl-bar::after {
 		content: '';
 		position: absolute;
-		width: 68%;
-		height: 5px;
+		margin: auto;
+		width: 2rem;
+		height: 2.5px;
 		background: $white;
-		top: 10px;
-		left: 16%;
-		box-shadow: 
-			0 10px 0 $white, 
-			0 20px 0 $white;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		transition: width 0.4s;
 	}
+	.dl-bar::before {
+        width: 50%;
+        top: -1.5rem;
+    }
+
+    .dl-bar::after {
+        width: 50%;
+        top: 1.5rem;
+	}
+	
 	button.dl-active {
 		display: none;
 	}
@@ -361,6 +387,12 @@ All this is done for any sub-level being entered.
 .dl-menuwrapper button.dl-active,
 .dl-menuwrapper ul {
 	background: $comp-color;
+}
+
+.dl-menuwrapper button:hover .dl-bar{
+	&::before, &::after {
+		width: 100%;
+	}
 }
 // Fix for IE
 .dl-menu li {
