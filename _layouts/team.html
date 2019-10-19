@@ -1,0 +1,16 @@
+---
+layout: page
+---
+<div class="flex team">
+    {% for member in site.data.team %}
+    <div class="team-member">
+        <a href="{{ member.url }}">
+            <img src="{{site.url}}/{{ member.img }}" class="img-circle zoombtn">
+        </a>
+        <p class="member-name">{{ member.first_name }} {{ member.last_name }}</p>
+        <p>{{ member.email }}</p>
+        <p>{{ member.role }}</p>
+
+    </div>
+    {% endfor %}
+</div>

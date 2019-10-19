@@ -1,0 +1,12 @@
+---
+layout: page
+---
+{% for mat in site.data.materials %}
+<ul>
+    <li>
+        <a class="zoombtn" href="{{ mat.url }}">{{ mat.title }}</a>
+        <p class="topic">{{ mat.authors[0].last_name }}, {{ mat.authors[0].first_name }}</p>
+        <p>{{ mat.year }}</p>
+    </li>
+</ul>
+{% endfor %}

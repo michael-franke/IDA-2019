@@ -1,0 +1,12 @@
+---
+layout: page
+---
+{% for assignment in site.data.homework %}
+<ul>
+    <li>
+        <a class="zoombtn" href="{{ site.url }}">{{ assignment.title }}</a>
+        <p class="topic">{{ assignment.topic }}</p>
+        <p> Due date: {{ assignment.due_date }}</p>
+    </li>
+</ul>
+{% endfor %}
