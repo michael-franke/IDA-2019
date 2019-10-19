@@ -9,7 +9,7 @@ logo:               'assets/img/uni-osnabrueck-logo-no-text.svg'
 background:         'assets/img/graphs-cropped.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-url:                https://michael-franke.github.io/IDA-2019/
+url:                https://michael-franke.github.io/IDA-2019
 baseurl:            'IDA-2019'
 
 # Jekyll
