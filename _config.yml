@@ -1,10 +1,8 @@
 # Site
 title:              Introduction to Data Analysis
-bio:                'WS 2019/20'
 semester:           'WS 2019/20'
 lecturer:           'Michael Franke'
-description:        "Intro to Data Analysis Course Website"
-email:              mviladrichhe@uos.de
+dev_email:              mviladrichhe@uos.de
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/uni-osnabrueck-logo-no-text.svg'

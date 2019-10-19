@@ -253,10 +253,19 @@ header .entry-meta {
 	}
 }
 
+.site-wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.site-content {
+	flex: 1 0 auto;
+	margin-bottom: 2rem;
+}
+
 .photo-creds {
-	position: fixed;
-	left: 0;
-	bottom: 0;
+	flex-shrink: 0;
 	> p {
 		margin: 0.5rem;
 		color: #fff;

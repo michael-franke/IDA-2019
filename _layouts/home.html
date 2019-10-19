@@ -1,84 +1,67 @@
 ---
-layout: compress
+layout: site-wrapper
 ---
-<!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
-
-<head>
-    {% include head.html %}
-</head>
-
-<body>
-    {% include nav.html %}
-    <!-- Header -->
-    <div>
-        <header class="header flex home-header" role="banner">
-            <div class="container animated fadeIn">
-                <div class="row">
-                    <a href="{{ site.url }}">
-                        <img src="{{ site.logo }}" class="img-logo zoombtn animated">
+<div>
+    <header class="header flex home-header" role="banner">
+        <div class="container animated fadeIn">
+            <div class="row">
+                <a href="{{ site.url }}">
+                    <img src="{{ site.logo }}" class="img-logo zoombtn animated">
+                </a>
+                <h3 class="title">
+                    <a class="zoombtn" href="{{ site.url }}">
+                        <p style="font-size:2.5rem;font-weight:300">{{ site.title }}</p>
                     </a>
-                    <h3 class="title">
-                        <a class="zoombtn" href="{{ site.url }}">
-                            <p style="font-size:2.5rem;font-weight:300">{{ site.title }}</p>
-                        </a>
-                    </h3>
-                    <h3 class="title">
-                        <p style="font-size:1.5rem;font-weight:500">{{ site.semester }}</p>
-                    </h3>
-                    <h3 class="title">
-                        <a href="http://www.home.uni-osnabrueck.de/michfranke/index.html">
-                            <p style="font-size:1rem;font-weight:300">{{ site.lecturer }}</p>
-                        </a>
-                    </h3>
-                    <h3 class="title">
-                        {% for link in site.data.navigation %}
-                            {% if link.url contains 'http' %}
-                                {% assign domain = '' %}
-                                {% else %}
-                                {% assign domain = site.url %}
-                            {% endif %}
-                            <a
-                                class="btn zoombtn" 
-                                href="{{ domain }}{{ link.url }}"
-                                {% if link.url contains 'http' %} target="_blank" rel="noopener noreferrer" {% endif %}>
-                                {{ link.title }}
-                            </a>
-                        {% endfor %}
-                    </h3>
-                </div>
+                </h3>
+                <h3 class="title">
+                    <p style="font-size:1.5rem;font-weight:500">{{ site.semester }}</p>
+                </h3>
+                <h3 class="title">
+                    <a href="http://www.home.uni-osnabrueck.de/michfranke/index.html">
+                        <p style="font-size:1rem;font-weight:300">{{ site.lecturer }}</p>
+                    </a>
+                </h3>
+                <h3 class="title">
+                    {% for link in site.data.navigation %}
+                    {% if link.url contains 'http' %}
+                    {% assign domain = '' %}
+                    {% else %}
+                    {% assign domain = site.url %}
+                    {% endif %}
+                    <a class="btn zoombtn" href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}
+                        target="_blank" rel="noopener noreferrer" {% endif %}>
+                        {{ link.title }}
+                    </a>
+                    {% endfor %}
+                </h3>
             </div>
-        </header>
-    </div>
-    <div class="wrapper-home animated fadeIn">
-        <div class="content">
-            <div class="post-title">
-                <h1>Course Content</h1>
-            </div>
-            The course consists of fours parts. After giving a more detailed overview of the course, Part I introduces R
-            the main programming language that we will use. Part II covers what is often called <em>descriptive statistics</em>.
-            It also gives us room to learn more about R when we massage data into shape, compute summary statistics and
-            plot various different data types in various different ways. <br /> <br />
-
-            Part III is the main theoretical part. It covers what is often called <em>inferential statistics</em>. Two aspects
-            distinguish this course from the bulk of its cousins out there. First, we use a <strong>dual-pronged approach</strong>, i.e.,
-            we are going to introduce both the frequentist and the Bayesian approach to statistical inference side by
-            siide. The motivation for this is that seeing the contrast between the two will aid our understanding of
-            either one. Second, we will use a <strong>computational approach</strong>, i.e., we foster understanding of mathematical
-            notions with computer simulations or other variants of helpful code. <br /> <br />
-
-            Part IV covers applications of what we have learned so far. It focuses on <strong>generalized linear models</strong>, a class
-            of models that have become the new standard for analyses of experimental data in the social and
-            psychological sciences, but are also very useful for data exploration on other domains.
         </div>
-    </div>
-    {% include background-creds.html %}
-    {% include scripts.html %}
-</body>
+    </header>
+</div>
+<div class="wrapper-home animated fadeIn">
+    <div class="content">
+        <div class="post-title">
+            <h1>Course Content</h1>
+        </div>
+        The course consists of fours parts. After giving a more detailed overview of the course, Part I introduces R
+        the main programming language that we will use. Part II covers what is often called <em>descriptive
+            statistics</em>.
+        It also gives us room to learn more about R when we massage data into shape, compute summary statistics and
+        plot various different data types in various different ways. <br /> <br />
 
-</html>
+        Part III is the main theoretical part. It covers what is often called <em>inferential statistics</em>. Two
+        aspects
+        distinguish this course from the bulk of its cousins out there. First, we use a <strong>dual-pronged
+            approach</strong>, i.e.,
+        we are going to introduce both the frequentist and the Bayesian approach to statistical inference side by
+        siide. The motivation for this is that seeing the contrast between the two will aid our understanding of
+        either one. Second, we will use a <strong>computational approach</strong>, i.e., we foster understanding of
+        mathematical
+        notions with computer simulations or other variants of helpful code. <br /> <br />
+
+        Part IV covers applications of what we have learned so far. It focuses on <strong>generalized linear
+            models</strong>, a class
+        of models that have become the new standard for analyses of experimental data in the social and
+        psychological sciences, but are also very useful for data exploration on other domains.
+    </div>
+</div>

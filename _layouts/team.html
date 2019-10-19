@@ -1,43 +1,16 @@
 ---
-layout: compress
+layout: page
 ---
-<!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
-<head>
-    {% include head.html %}
-</head>
-<body>
-    {% include nav.html %}
-    <!-- Header -->
-    <header class="header" role="banner">
-        <div class="wrapper animated fadeIn">
-            <div class="content">
-                <div class="post-title">
-                    <h1>{{ page.title }}</h1>
-                    <a class="btn zoombtn" href="{{site.url}}">
-                        <i class="fa fa-home"></i>
-                    </a>
-                </div>
-                <div class="flex team">
-                    {% for member in site.data.team %}
-                        <div class="team-member">
-                            <a href="{{ member.url }}">
-                                <img src="{{site.url}}/{{ member.img }}" class="img-circle zoombtn">
-                            </a>
-                            <p class="member-name">{{ member.first-name }} {{ member.surname }}</p>
-                            <p>{{ member.e-mail }}</p>
-                            <p>{{ member.role }}</p>
-                            
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </header>
-    {% include background-creds.html %}
-    {% include scripts.html %}
-</body>
-</html>
+<div class="flex team">
+    {% for member in site.data.team %}
+    <div class="team-member">
+        <a href="{{ member.url }}">
+            <img src="{{site.url}}/{{ member.img }}" class="img-circle zoombtn">
+        </a>
+        <p class="member-name">{{ member.first_name }} {{ member.last_name }}</p>
+        <p>{{ member.email }}</p>
+        <p>{{ member.role }}</p>
+
+    </div>
+    {% endfor %}
+</div>

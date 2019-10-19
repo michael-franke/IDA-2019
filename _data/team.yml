@@ -1,55 +1,55 @@
 # Team Members
 
-- first-name: Michael
-  surname: Franke
+- first_name: Michael
+  last_name: Franke
   role: Lecturer
-  e-mail: michael.franke@uos.de
+  email: michael.franke@uos.de
   img: assets/img/uni-osnabrueck-logo-no-text.svg
 
-- first-name: Florence
-  surname: Bockting
+- first_name: Florence
+  last_name: Bockting
   role: Tutor
-  e-mail: fbockting@uos.de
+  email: fbockting@uos.de
   img: assets/img/uni-osnabrueck-logo-no-text.svg
 
-- first-name: Tobias
-  surname: Anton
+- first_name: Tobias
+  last_name: Anton
   role: Tutor
-  e-mail: tanton@uos.de
+  email: tanton@uos.de
   img: assets/img/uni-osnabrueck-logo-no-text.svg
 
-- first-name: Taher
-  surname: Habib
+- first_name: Taher
+  last_name: Habib
   role: Tutor
-  e-mail: thabib@uos.de
+  email: thabib@uos.de
   img: assets/img/uni-osnabrueck-logo-no-text.svg
 
-- first-name: Maria
-  surname: Perisha
+- first_name: Maria
+  last_name: Perisha
   role: Tutor
-  e-mail: mperisha@uos.de
+  email: mperisha@uos.de
   img: assets/img/uni-osnabrueck-logo-no-text.svg
 
-- first-name: Marc
-  surname: Viladrich
+- first_name: Marc
+  last_name: Viladrich
   role: Tutor
-  e-mail: mviladrichhe@uos.de
+  email: mviladrichhe@uos.de
   img: assets/img/uni-osnabrueck-logo-no-text.svg
 
-- first-name: Jona
-  surname: Carmon
+- first_name: Jona
+  last_name: Carmon
   role: Tutor
-  e-mail: jcarmon@uos.de
+  email: jcarmon@uos.de
   img: assets/img/uni-osnabrueck-logo-no-text.svg
 
-- first-name: Nina
-  surname: Mainusch
+- first_name: Nina
+  last_name: Mainusch
   role: Tutor
-  e-mail: nmainusch@uos.de
+  email: nmainusch@uos.de
   img: assets/img/uni-osnabrueck-logo-no-text.svg
 
-- first-name: Tallulah
-  surname: Jansen
+- first_name: Tallulah
+  last_name: Jansen
   role: Tutor
-  e-mail: taljansen@uos.de
+  email: taljansen@uos.de
   img: assets/img/uni-osnabrueck-logo-no-text.svg

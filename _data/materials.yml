@@ -2,32 +2,32 @@
 
 - title: Lagrange Multipliers, introduction
   authors:
-    - first-name: Khan
-      surname: Academy
+    - first_name: Khan
+      last_name: Academy
   url: https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/constrained-optimization/a/lagrange-multipliers-single-constraint
   year: 2019
   journal: ""
 
 - title: Graphs in Statistical Analysis
   authors:
-    - first-name: F. J.
-      surname: Anscombe
+    - first_name: F. J.
+      last_name: Anscombe
   url: https://doi.org/10.2307/2682899
   year: 1973
   journal: The American Statistician
 
 - title: Reasoning About Uncertainty
   authors:
-    - first-name: Joseph Y.
-      surname: Halpern
+    - first_name: Joseph Y.
+      last_name: Halpern
   url: https://doi.org/10.2307/2682899
   year: 2003
   journal: MIT Press
 
 - title: 'Probability Theory: The Logic of Science'
   authors:
-    - first-name: Edwin T.
-      surname: Jaynes
+    - first_name: Edwin T.
+      last_name: Jaynes
   url: https://doi.org/10.2307/2682899
   year: 2003
   journal: Cambridge University Press

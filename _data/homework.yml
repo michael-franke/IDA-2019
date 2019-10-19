@@ -3,34 +3,34 @@
 - title: Homework 1
   topic: "Basics of R"
   url: /
-  due-date: 2019-10-17
+  due_date: 2019-10-17
 
 - title: Homework 2
   topic: "Basics of Data"
   url: /
-  due-date: 2019-10-17
+  due_date: 2019-10-17
 
 - title: Homework 3
   topic: "Data Plotting"
   url: /
-  due-date: 2019-10-17
+  due_date: 2019-10-17
 
 - title: Homework 4
   topic: "Basics of Models"
   url: /
-  due-date: 2019-10-17
+  due_date: 2019-10-17
 
 - title: Homework 5
   topic: "Models Advanced"
   url: /
-  due-date: 2019-10-17
+  due_date: 2019-10-17
 
 - title: Homework 6
   topic: "Basics Of Applied (Generalized) Linear Models"
   url: /
-  due-date: 2019-10-17
+  due_date: 2019-10-17
 
 - title: Homework 7
   topic: "Applied (Generalized) Linear Models Advanced"
   url: /
-  due-date: 2019-10-17
+  due_date: 2019-10-17
