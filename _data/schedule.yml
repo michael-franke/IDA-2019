@@ -1,0 +1,164 @@
+# Scheduled content per week
+
+columns: 
+  - Week
+  - "Tutorial Content"
+  - "Wednesday Lecture"
+  - "Friday Lecture"
+  - "HW Issued"
+
+
+rows: 
+  - weekno: 44
+    tut: ""
+    wed: 
+      topic: ""
+      chapter: -1
+    fri: 
+      topic: "Course Overview"
+      chapter: 1
+    hw: -1
+
+  - weekno: 45
+    tut: "Installing R & Packages (Stan, tensorflow)"
+    wed: 
+      topic: "Intro to R"
+      chapter: 2
+    fri: 
+      topic: "Data & Data Handling"
+      chapter: 3
+    hw: 1
+
+  - weekno: 46
+    tut: "Using R, Data Handling / Wrangling"
+    wed: 
+      topic: "Data Wrangling"
+      chapter: 4
+    fri: 
+      topic: "Summary Statistics"
+      chapter: 5
+    hw: 2
+
+  - weekno: 47
+    tut: "More R, Wrangling, Summary Stats"
+    wed: 
+      topic: "NO LECTURE"
+      chapter: -1
+      alert: true
+    fri: 
+      topic: "Data Plotting"
+      chapter: 6
+    hw: 3
+  
+  - weekno: 48
+    tut: "Plotting, More R Exercises"
+    wed: 
+      topic: "Probability Basics"
+      chapter: 7
+    fri: 
+      topic: "Frequentism vs Bayes"
+      chapter: 8
+    hw: 4
+
+  - weekno: 49
+    tut: "Probability Calculus, Bayes Rule"
+    wed: 
+      topic: "Statistical Models"
+      chapter: 9
+    fri: 
+      topic: "Parameter Inference 1"
+      chapter: 10
+    hw: 5
+
+  - weekno: 50
+    tut: "Simulations on Error Control, Calculations with Bayes Rule"
+    wed: 
+      topic: "NO LECTURE"
+      chapter: -1
+      alert: true
+    fri: 
+      topic: "Parameter Inference 2"
+      chapter: 10
+    hw: 6
+
+  - weekno: 51
+    tut: "Sampling-based Approaches, Using R, Web PPL, greta"
+    wed: 
+      topic: "Classical Testing 1"
+      chapter: 11
+    fri: 
+      topic: "Classical Testing 2"
+      chapter: 1
+    hw: 7
+
+  - weekno: ""
+    tut: ""
+    wed: 
+      topic: "CHRISTMAS BREAK"
+      chapter: -1
+      alert: true
+    fri: 
+      topic: ""
+      chapter: -1
+    hw: -1
+  
+  - weekno: 2
+    tut: "Binomial Test, t-test (maybe ANOVA)"
+    wed: 
+      topic: "Classical Testing 3"
+      chapter: 11
+    fri: 
+      topic: "Model Comparison"
+      chapter: 12
+    hw: 8
+
+  - weekno: 3
+    tut: "Model Comparison, Bayes Factors, LR Test, AIC"
+    wed: 
+      topic: "Bayesian Hypothesis Testing"
+      chapter: 13
+    fri: 
+      topic: "Model Criticism"
+      chapter: 14
+    hw: 9
+
+  - weekno: 4
+    tut: ""
+    wed: 
+      topic: "Simple Linear Regression"
+      chapter: -1
+    fri: 
+      topic: "Generalized Regression"
+      chapter: -1
+    hw: 10
+
+  - weekno: 5
+    tut: ""
+    wed: 
+      topic: "Generalized Regression"
+      chapter: -1
+    fri: 
+      topic: "Hierarchical Regression"
+      chapter: -1
+    hw: 11
+  
+  - weekno: 6
+    tut: ""
+    wed: 
+      topic: "Q&A"
+      chapter: -1
+    fri: 
+      topic: "Final Exam"
+      chapter: -1
+      alert: true
+    hw: -1
+
+  - weekno: 7
+    tut: ""
+    wed: 
+      topic: "Cognitive Models in Data Analysis"
+      chapter: -1
+    fri: 
+      topic: "TBA"
+      chapter: -1
+    hw: -1

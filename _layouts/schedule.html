@@ -1,7 +1,7 @@
 ---
 layout: page
 ---
-{% for topic in site.data.topics %}
+<!-- {% for topic in site.data.topics %}
 <ul>
     <li>
         <a class="zoombtn" href="{{ site.url }}">{{ topic.title }}</a>
@@ -12,4 +12,39 @@ layout: page
         </ul>
     </li>
 </ul>
-{% endfor %}
+{% endfor %} -->
+<div class="schedule-table">
+    <div class="schedule-row schedule-header">
+            {% for colname in site.data.schedule.columns %}
+                <div class="schedule-cell">{{colname}}</div>
+            {% endfor %}
+    </div>
+    <hr>
+    {% for week in site.data.schedule.rows %}
+        <div class="schedule-row">
+            <div class="schedule-cell">
+                {{ week.weekno }}
+            </div>
+            <div class="schedule-cell">
+                {{ week.tut }}
+            </div>
+            <div class="schedule-cell">
+                <p class="bold {% if week.wed.alert %}alert{% endif %}">{{ week.wed.topic }}</p>
+                {% if week.wed.chapter > 0 %}
+                    <p>Chapter {{ week.wed.chapter }}</p>
+                {% endif %}
+            </div>
+            <div class="schedule-cell">
+                <p class="bold {% if week.fri.alert %}alert{% endif %}">{{ week.fri.topic }}</p>
+                {% if week.fri.chapter > 0 %}
+                    <p>Chapter {{ week.fri.chapter }}</p>
+                {% endif %}
+            </div>
+            <div class="schedule-cell">
+                {% if week.hw > 0 %}
+                    HW {{ week.hw }}
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
