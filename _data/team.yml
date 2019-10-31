@@ -20,13 +20,13 @@
 
 - first_name: Tallulah
   last_name: Jansen
-  role: Tutor
+  role: Tutor, Communications
   email: taljansen@uos.de
   img: assets/img/char4.png
 
 - first_name: Nina
   last_name: Mainusch
-  role: Tutor
+  role: Tutor, Installation
   email: nmainusch@uos.de
   img: assets/img/char5.png
 
@@ -50,7 +50,7 @@
 
 - first_name: Marc
   last_name: Viladrich
-  role: Tutor
+  role: Tutor, Website
   email: mviladrichhe@uos.de
   img: assets/img/char9.png
 
