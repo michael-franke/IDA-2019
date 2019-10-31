@@ -1,16 +1,16 @@
 # Site navigation links
 
 - title: Schedule
-  url: /schedule/
+  url: schedule/
 
 - title: Homework
-  url: /homework/
+  url: homework/
 
 - title: Grading
-  url: /grading/
+  url: grading/
 
 - title: Materials
-  url: /materials/
+  url: materials/
 
 - title: Team
-  url: /team/
+  url: team/
