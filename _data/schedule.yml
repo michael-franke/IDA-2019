@@ -13,9 +13,11 @@ rows:
     tut: ""
     wed: 
       topic: ""
+      slides: ""
       chapter: -1
     fri: 
       topic: "Course Overview"
+      slides: "01-intro.pdf"
       chapter: 1
     hw: -1
 
@@ -23,9 +25,11 @@ rows:
     tut: "Installing R & Packages (Stan, tensorflow)"
     wed: 
       topic: "Intro to R"
+      slides: ""
       chapter: 2
     fri: 
       topic: "Data & Data Handling"
+      slides: ""
       chapter: 3
     hw: 1
 
@@ -33,9 +37,11 @@ rows:
     tut: "Using R, Data Handling / Wrangling"
     wed: 
       topic: "Data Wrangling"
+      slides: ""
       chapter: 4
     fri: 
       topic: "Summary Statistics"
+      slides: ""
       chapter: 5
     hw: 2
 
@@ -43,10 +49,12 @@ rows:
     tut: "More R, Wrangling, Summary Stats"
     wed: 
       topic: "NO LECTURE"
+      slides: ""
       chapter: -1
       alert: true
     fri: 
       topic: "Data Plotting"
+      slides: ""
       chapter: 6
     hw: 3
   
@@ -54,9 +62,11 @@ rows:
     tut: "Plotting, More R Exercises"
     wed: 
       topic: "Probability Basics"
+      slides: ""
       chapter: 7
     fri: 
       topic: "Frequentism vs Bayes"
+      slides: ""
       chapter: 8
     hw: 4
 
@@ -64,9 +74,11 @@ rows:
     tut: "Probability Calculus, Bayes Rule"
     wed: 
       topic: "Statistical Models"
+      slides: ""
       chapter: 9
     fri: 
       topic: "Parameter Inference 1"
+      slides: ""
       chapter: 10
     hw: 5
 
@@ -74,10 +86,12 @@ rows:
     tut: "Simulations on Error Control, Calculations with Bayes Rule"
     wed: 
       topic: "NO LECTURE"
+      slides: ""
       chapter: -1
       alert: true
     fri: 
       topic: "Parameter Inference 2"
+      slides: ""
       chapter: 10
     hw: 6
 
@@ -85,9 +99,11 @@ rows:
     tut: "Sampling-based Approaches, Using R, Web PPL, greta"
     wed: 
       topic: "Classical Testing 1"
+      slides: ""
       chapter: 11
     fri: 
       topic: "Classical Testing 2"
+      slides: ""
       chapter: 1
     hw: 7
 
@@ -95,10 +111,12 @@ rows:
     tut: ""
     wed: 
       topic: "CHRISTMAS BREAK"
+      slides: ""
       chapter: -1
       alert: true
     fri: 
       topic: ""
+      slides: ""
       chapter: -1
     hw: -1
   
@@ -106,9 +124,11 @@ rows:
     tut: "Binomial Test, t-test (maybe ANOVA)"
     wed: 
       topic: "Classical Testing 3"
+      slides: ""
       chapter: 11
     fri: 
       topic: "Model Comparison"
+      slides: ""
       chapter: 12
     hw: 8
 
@@ -116,9 +136,11 @@ rows:
     tut: "Model Comparison, Bayes Factors, LR Test, AIC"
     wed: 
       topic: "Bayesian Hypothesis Testing"
+      slides: ""
       chapter: 13
     fri: 
       topic: "Model Criticism"
+      slides: ""
       chapter: 14
     hw: 9
 
@@ -126,9 +148,11 @@ rows:
     tut: ""
     wed: 
       topic: "Simple Linear Regression"
+      slides: ""
       chapter: -1
     fri: 
       topic: "Generalized Regression"
+      slides: ""
       chapter: -1
     hw: 10
 
@@ -136,9 +160,11 @@ rows:
     tut: ""
     wed: 
       topic: "Generalized Regression"
+      slides: ""
       chapter: -1
     fri: 
       topic: "Hierarchical Regression"
+      slides: ""
       chapter: -1
     hw: 11
   
@@ -146,9 +172,11 @@ rows:
     tut: ""
     wed: 
       topic: "Q&A"
+      slides: ""
       chapter: -1
     fri: 
       topic: "Final Exam"
+      slides: ""
       chapter: -1
       alert: true
     hw: -1
@@ -157,8 +185,10 @@ rows:
     tut: ""
     wed: 
       topic: "Cognitive Models in Data Analysis"
+      slides: ""
       chapter: -1
     fri: 
       topic: "TBA"
+      slides: ""
       chapter: -1
     hw: -1

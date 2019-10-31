@@ -1,6 +1,6 @@
 ---
 layout: grading
-title:  "Grading"
+title:  "Course requirements"
 ---
 
 To pass this course, you need a passing grade for your homework assignments and a passing grade on the final exam. The overall grade of the course is the average (50/50) of the grades received for the homework and the final exam.
@@ -26,8 +26,8 @@ The total set of points accumulated by a participant for all homework sets will 
 
 The final exam will take place on Friday January 31st 2020.
 You will have four hours to complete the exam with calm focus.
-You are allowed to bring any **hand-written notes**. 
-No electronic devices, no photocopies, no prints -- just your own hand-written notes with whatever you want to write down for yourselves.
+You are allowed to bring 4 DIN A4 pages of **hand-written notes**. 
+No electronic devices, no photocopies, no prints. 
 
 # Retake
 

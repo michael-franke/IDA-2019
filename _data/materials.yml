@@ -1,33 +1,10 @@
 # Materials for the course
 
-- title: Lagrange Multipliers, introduction
+- title: Course notes (web-book)
   authors:
-    - first_name: Khan
-      last_name: Academy
-  url: https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/constrained-optimization/a/lagrange-multipliers-single-constraint
+    - first_name: Michael
+      last_name: Franke
+  url: https://michael-franke.github.io/intro-data-analysis/index.html
   year: 2019
   journal: ""
 
-- title: Graphs in Statistical Analysis
-  authors:
-    - first_name: F. J.
-      last_name: Anscombe
-  url: https://doi.org/10.2307/2682899
-  year: 1973
-  journal: The American Statistician
-
-- title: Reasoning About Uncertainty
-  authors:
-    - first_name: Joseph Y.
-      last_name: Halpern
-  url: https://doi.org/10.2307/2682899
-  year: 2003
-  journal: MIT Press
-
-- title: 'Probability Theory: The Logic of Science'
-  authors:
-    - first_name: Edwin T.
-      last_name: Jaynes
-  url: https://doi.org/10.2307/2682899
-  year: 2003
-  journal: Cambridge University Press

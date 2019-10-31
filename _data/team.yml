@@ -4,52 +4,54 @@
   last_name: Franke
   role: Lecturer
   email: michael.franke@uos.de
-  img: assets/img/uni-osnabrueck-logo-no-text.svg
+  img: assets/img/char1.png
 
 - first_name: Florence
   last_name: Bockting
-  role: Tutor
+  role: Web-book
   email: fbockting@uos.de
-  img: assets/img/uni-osnabrueck-logo-no-text.svg
+  img: assets/img/char2.png
 
 - first_name: Tobias
   last_name: Anton
-  role: Tutor
+  role: Web-book
   email: tanton@uos.de
-  img: assets/img/uni-osnabrueck-logo-no-text.svg
+  img: assets/img/char3.png
 
-- first_name: Taher
-  last_name: Habib
-  role: Tutor
-  email: thabib@uos.de
-  img: assets/img/uni-osnabrueck-logo-no-text.svg
+- first_name: Tallulah
+  last_name: Jansen
+  role: Tutor, Communications
+  email: taljansen@uos.de
+  img: assets/img/char4.png
+
+- first_name: Nina
+  last_name: Mainusch
+  role: Tutor, Installation
+  email: nmainusch@uos.de
+  img: assets/img/char5.png
 
 - first_name: Maria
   last_name: Perisha
   role: Tutor
   email: mperisha@uos.de
-  img: assets/img/uni-osnabrueck-logo-no-text.svg
-
-- first_name: Marc
-  last_name: Viladrich
-  role: Tutor
-  email: mviladrichhe@uos.de
-  img: assets/img/uni-osnabrueck-logo-no-text.svg
+  img: assets/img/char6.png
 
 - first_name: Jona
   last_name: Carmon
   role: Tutor
   email: jcarmon@uos.de
-  img: assets/img/uni-osnabrueck-logo-no-text.svg
+  img: assets/img/char7.png
 
-- first_name: Nina
-  last_name: Mainusch
+- first_name: Taher
+  last_name: Habib
   role: Tutor
-  email: nmainusch@uos.de
-  img: assets/img/uni-osnabrueck-logo-no-text.svg
+  email: thabib@uos.de
+  img: assets/img/char8.png
 
-- first_name: Tallulah
-  last_name: Jansen
-  role: Tutor
-  email: taljansen@uos.de
-  img: assets/img/uni-osnabrueck-logo-no-text.svg
+- first_name: Marc
+  last_name: Viladrich
+  role: Tutor, Website
+  email: mviladrichhe@uos.de
+  img: assets/img/char9.png
+
+
