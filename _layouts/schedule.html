@@ -29,13 +29,13 @@ layout: page
                 {{ week.tut }}
             </div>
             <div class="schedule-cell">
-                <p class="bold {% if week.wed.alert %}alert{% endif %}">{{ week.wed.topic }}</p>
+                <p class="bold {% if week.wed.alert %}alert{% endif %}"><a href="slides/{{week.wed.slides}}">{{ week.wed.topic }}</a></p>
                 {% if week.wed.chapter > 0 %}
                     <p>Chapter {{ week.wed.chapter }}</p>
                 {% endif %}
             </div>
             <div class="schedule-cell">
-                <p class="bold {% if week.fri.alert %}alert{% endif %}">{{ week.fri.topic }}</p>
+                <p class="bold {% if week.fri.alert %}alert{% endif %}"><a href="slides/{{week.fri.slides}}">{{ week.fri.topic }}</a></p>
                 {% if week.fri.chapter > 0 %}
                     <p>Chapter {{ week.fri.chapter }}</p>
                 {% endif %}

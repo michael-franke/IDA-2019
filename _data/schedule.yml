@@ -16,6 +16,7 @@ rows:
       chapter: -1
     fri: 
       topic: "Course Overview"
+      slides: "01-intro.pdf"
       chapter: 1
     hw: -1
 
