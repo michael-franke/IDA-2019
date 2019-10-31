@@ -2,7 +2,7 @@
 layout: site-wrapper
 ---
 <header class="header" role="banner">
-    <div class="wrapper animated fadeIn">
+    <div class="wrapper animated fadeIn {% if layout.wide-container %}wrapper-wide{% endif %}">
         <div class="content">
             <div class="post-title">
                 <h1>{{ page.title }}</h1>

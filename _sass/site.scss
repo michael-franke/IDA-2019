@@ -105,9 +105,10 @@ body {
 	}
 }
 .wrapper,
-.wrapper-home {
-	width: 85%;
-	max-width: 1080px;
+.wrapper-home,
+.wrapper-wide {
+	width: 75%;
+	max-width: 850px;
 	margin: 4rem auto;
 	background: $white;
 	color: $color_tuatara;
@@ -124,6 +125,10 @@ body {
 }
 .wrapper-home {
 	margin-top: 0;
+}
+.wrapper-wide {
+	width: 85%;
+	max-width: 1080px;
 }
 #disqus_thread {
 	width: 75%;
@@ -286,10 +291,6 @@ header .entry-meta {
 .schedule-header {
 	font-size: 1.15rem;
 	font-weight: 600;
-
-	@media #{$medium} {
-		font-size: 1rem;
-	}
 }
 
 .schedule-row {
@@ -320,5 +321,9 @@ header .entry-meta {
 	p {
 		margin-block-start: 0;
 		margin-block-end: 0;
+	}
+
+	@media #{$small} {
+		font-size: 3.5vw;
 	}
 }
