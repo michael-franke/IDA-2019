@@ -6,6 +6,18 @@
   email: michael.franke@uos.de
   img: assets/img/char1.png
 
+- first_name: Florence
+  last_name: Bockting
+  role: Web-book
+  email: fbockting@uos.de
+  img: assets/img/char8.png
+
+- first_name: Tobias
+  last_name: Anton
+  role: Web-book
+  email: tanton@uos.de
+  img: assets/img/char9.png
+
 - first_name: Tallulah
   last_name: Jansen
   role: Tutor
@@ -42,14 +54,4 @@
   email: mviladrichhe@uos.de
   img: assets/img/char7.png
 
-- first_name: Florence
-  last_name: Bockting
-  role: Web-book
-  email: fbockting@uos.de
-  img: assets/img/char8.png
 
-- first_name: Tobias
-  last_name: Anton
-  role: Web-book
-  email: tanton@uos.de
-  img: assets/img/char9.png
