@@ -5,7 +5,7 @@ layout: page
 <ul>
     <li>
         <span>{{ assignment.title }}</span>
-        <a class="zoombtn" href="../{{assignment.url}}" download="" onClick="window.location.reload();"><i class="fa fa-download"></i></a>
+        <a class="zoombtn" href="{{ site.url }}/{{assignment.url}}" download="" onClick="window.location.reload();"><i class="fa fa-download"></i></a>
         <p class="topic">{{ assignment.topic }}</p>
         <p> Due date: {{ assignment.due_date }}</p>
     </li>
