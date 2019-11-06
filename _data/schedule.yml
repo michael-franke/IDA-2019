@@ -25,7 +25,7 @@ rows:
     tut: "Installing R & Packages (Stan, tensorflow)"
     wed: 
       topic: "Intro to R"
-      slides: ""
+      slides: "02-R-basics.pdf"
       chapter: 2
     fri: 
       topic: "Data & Data Handling"
