@@ -1,6 +1,6 @@
 # Homework assignments
 
-# - title: Homework 1
-#   topic: "Basics of R"
-#   url: downloads/homework-zips/balboa-plus-fill.zip
-#   due_date: 2019-11-16
+- title: Homework 1
+  topic: "Basics of R"
+  url: homework/01-basic-R.html
+  due_date: 2019-11-15
