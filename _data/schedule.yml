@@ -29,7 +29,7 @@ rows:
       chapter: 2
     fri: 
       topic: "Data & Data Handling"
-      slides: ""
+      slides: "03-data.pdf"
       chapter: 3
     hw: 1
 
