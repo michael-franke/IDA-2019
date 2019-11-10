@@ -619,7 +619,7 @@ $(document).ready(function () {
 <h3>16. Task (3 points)</h3>
 <p>Look at the following formula and the output that it returns. What does this formula do? Can you give a question for which this formula returns the answer?</p>
 <p>Hint: Use for example the help-possibility in R in order to understand what <code>which.min</code>does.</p>
-<pre class="r"><code>brain_data3[1, which.min(brain_data3$calculated_volume)]</code></pre>
+<pre class="r"><code>brain_data3[which.min(brain_data3$calculated_volume),1]</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   brain_regions         
 ##   &lt;chr&gt;                 
