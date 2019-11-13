@@ -37,7 +37,7 @@ rows:
     tut: "Using R, Data Handling / Wrangling"
     wed: 
       topic: "Data Wrangling"
-      slides: ""
+      slides: "04-wrangling.pdf"
       chapter: 4
     fri: 
       topic: "Summary Statistics"
