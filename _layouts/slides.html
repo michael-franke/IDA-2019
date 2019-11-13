@@ -1,0 +1,52 @@
+---
+layout: page
+---
+{% assign currentLecture = 1 %}
+<div class="details">
+    <div class="summary"><i class="fa fa-chevron-right"></i>Lectures</div>
+        <ul>
+            {% for week in site.data.schedule.rows %}
+                    {% if week.wed.slides != "" %}
+                        <li>
+                            <span>Lecture {{ currentLecture }}: {{ week.wed.topic }}</span>
+                            <a class="zoombtn" href="../{{week.wed.slides}}" download="" onClick="window.location.reload();"><i class="fa fa-download"></i></a>
+                        </li>
+                        {% assign currentLecture = currentLecture | plus: 1 %}
+                    {% endif %}
+                    {% if week.fri.slides != "" %}
+                        <li>
+                            <span>Lecture {{ currentLecture }}: {{ week.fri.topic }}</span>
+                            <a class="zoombtn" href="../{{week.fri.slides}}" download="" onClick="window.location.reload();"><i class="fa fa-download"></i></a>
+                        </li>
+                        {% assign currentLecture = currentLecture | plus: 1 %}
+                    {% endif %}
+            {% endfor %}
+        </ul>
+</div>
+
+{% assign currentTut = 1 %}
+<div class="details">
+    <div class="summary"><i class="fa fa-chevron-right"></i>Tutorials</div>
+        <ul>
+            {% for week in site.data.schedule.rows %}
+                    {% if week.tut.slides != "" %}
+                        <li>
+                            <span>Tutorial {{ currentTut }}: {{ week.tut.topic }}</span>
+                            <a class="zoombtn" href="../{{week.tut.slides}}" download="" onClick="window.location.reload();"><i class="fa fa-download"></i></a>
+                        </li>
+                        {% assign currentTut = currentTut | plus: 1 %}
+                    {% endif %}
+            {% endfor %}
+        </ul>
+</div>
+
+<script>
+    var details = document.querySelectorAll(".details")
+    details.forEach(detail => {
+        detail.addEventListener("click", detailClick, false)
+    });
+
+    function detailClick() {
+        this.classList.toggle("active");
+    }
+</script>
