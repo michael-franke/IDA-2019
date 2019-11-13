@@ -43,7 +43,7 @@ rows:
       slides: "downloads/tutorials/Tutorial_1.Rmd"
     wed: 
       topic: "Data Wrangling"
-      slides: ""
+      slides: "04-wrangling.pdf"
       chapter: 4
     fri: 
       topic: "Summary Statistics"
