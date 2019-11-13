@@ -19,7 +19,7 @@ rows:
       chapter: -1
     fri: 
       topic: "Course Overview"
-      slides: "downloads/lectures/01-intro.pdf"
+      slides: "slides/01-intro.pdf"
       chapter: 1
     hw: -1
 
@@ -29,21 +29,21 @@ rows:
       slides: ""
     wed: 
       topic: "Intro to R"
-      slides: "downloads/lectures/02-R-basics.pdf"
+      slides: "slides/02-R-basics.pdf"
       chapter: 2
     fri: 
       topic: "Data & Data Handling"
-      slides: "downloads/lectures/03-data.pdf"
+      slides: "slides/03-data.pdf"
       chapter: 3
     hw: 1
 
   - weekno: 46
     tut: 
       topic: "Using R, Data Handling / Wrangling"
-      slides: "downloads/tutorials/Tutorial_1.Rmd"
+      slides: "tutorials/Tutorial_1.Rmd"
     wed: 
       topic: "Data Wrangling"
-      slides: "04-wrangling.pdf"
+      slides: "slides/04-wrangling.pdf"
       chapter: 4
     fri: 
       topic: "Summary Statistics"
