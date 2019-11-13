@@ -9,14 +9,14 @@ layout: page
                     {% if week.wed.slides != "" %}
                         <li>
                             <span>Lecture {{ currentLecture }}: {{ week.wed.topic }}</span>
-                            <a class="zoombtn" href="../{{week.wed.slides}}" download="" onClick="window.location.reload();"><i class="fa fa-download"></i></a>
+                            <a class="zoombtn" href="../{{week.wed.slides}}" download=""><i class="fa fa-download"></i></a>
                         </li>
                         {% assign currentLecture = currentLecture | plus: 1 %}
                     {% endif %}
                     {% if week.fri.slides != "" %}
                         <li>
                             <span>Lecture {{ currentLecture }}: {{ week.fri.topic }}</span>
-                            <a class="zoombtn" href="../{{week.fri.slides}}" download="" onClick="window.location.reload();"><i class="fa fa-download"></i></a>
+                            <a class="zoombtn" href="../{{week.fri.slides}}" download=""><i class="fa fa-download"></i></a>
                         </li>
                         {% assign currentLecture = currentLecture | plus: 1 %}
                     {% endif %}
@@ -32,7 +32,7 @@ layout: page
                     {% if week.tut.slides != "" %}
                         <li>
                             <span>Tutorial {{ currentTut }}: {{ week.tut.topic }}</span>
-                            <a class="zoombtn" href="../{{week.tut.slides}}" download="" onClick="window.location.reload();"><i class="fa fa-download"></i></a>
+                            <a class="zoombtn" href="../{{week.tut.slides}}" download=""><i class="fa fa-download"></i></a>
                         </li>
                         {% assign currentTut = currentTut | plus: 1 %}
                     {% endif %}
@@ -41,12 +41,12 @@ layout: page
 </div>
 
 <script>
-    var details = document.querySelectorAll(".details")
-    details.forEach(detail => {
-        detail.addEventListener("click", detailClick, false)
+    var summaries = document.querySelectorAll(".summary")
+    summaries.forEach(summary => {
+        summary.addEventListener("click", summaryClick, false)
     });
 
-    function detailClick() {
+    function summaryClick() {
         this.classList.toggle("active");
     }
 </script>
