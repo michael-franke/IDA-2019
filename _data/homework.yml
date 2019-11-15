@@ -4,3 +4,8 @@
   topic: "Basics of R"
   url: homework/01-basic-r.html
   due_date: 2019-11-15
+
+- title: Homework 2
+  topic: "Data wrangling"
+  url: homework/02-wrangling.html
+  due_date: 2019-11-22
