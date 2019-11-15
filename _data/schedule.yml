@@ -10,34 +10,40 @@ columns:
 
 rows: 
   - weekno: 44
-    tut: ""
+    tut: 
+      topic: ""
+      slides: ""
     wed: 
       topic: ""
       slides: ""
       chapter: -1
     fri: 
       topic: "Course Overview"
-      slides: "01-intro.pdf"
+      slides: "slides/01-intro.pdf"
       chapter: 1
     hw: -1
 
   - weekno: 45
-    tut: "Installing R & Packages (Stan, tensorflow)"
+    tut: 
+      topic: "Installing R & Packages (Stan, tensorflow)"
+      slides: ""
     wed: 
       topic: "Intro to R"
-      slides: "02-R-basics.pdf"
+      slides: "slides/02-R-basics.pdf"
       chapter: 2
     fri: 
       topic: "Data & Data Handling"
-      slides: "03-data.pdf"
+      slides: "slides/03-data.pdf"
       chapter: 3
     hw: 1
 
   - weekno: 46
-    tut: "Using R, Data Handling / Wrangling"
+    tut: 
+      topic: "Using R, Data Handling / Wrangling"
+      slides: "tutorials/Tutorial_1.Rmd"
     wed: 
       topic: "Data Wrangling"
-      slides: "04-wrangling.pdf"
+      slides: "slides/04-wrangling.pdf"
       chapter: 4
     fri: 
       topic: "Summary Statistics"
@@ -46,7 +52,9 @@ rows:
     hw: 2
 
   - weekno: 47
-    tut: "More R, Wrangling, Summary Stats"
+    tut: 
+      topic: "More R, Wrangling, Summary Stats"
+      slides: ""
     wed: 
       topic: "NO LECTURE"
       slides: ""
@@ -59,7 +67,9 @@ rows:
     hw: 3
   
   - weekno: 48
-    tut: "Plotting, More R Exercises"
+    tut: 
+      topic: "Plotting, More R Exercises"
+      slides: ""
     wed: 
       topic: "Probability Basics"
       slides: ""
@@ -71,7 +81,9 @@ rows:
     hw: 4
 
   - weekno: 49
-    tut: "Probability Calculus, Bayes Rule"
+    tut: 
+      topic: "Probability Calculus, Bayes Rule"
+      slides: ""
     wed: 
       topic: "Statistical Models"
       slides: ""
@@ -83,7 +95,9 @@ rows:
     hw: 5
 
   - weekno: 50
-    tut: "Simulations on Error Control, Calculations with Bayes Rule"
+    tut: 
+      topic: "Simulations on Error Control, Calculations with Bayes Rule"
+      slides: ""
     wed: 
       topic: "NO LECTURE"
       slides: ""
@@ -96,7 +110,9 @@ rows:
     hw: 6
 
   - weekno: 51
-    tut: "Sampling-based Approaches, Using R, Web PPL, greta"
+    tut: 
+      topic: "Sampling-based Approaches, Using R, Web PPL, greta"
+      slides: ""
     wed: 
       topic: "Classical Testing 1"
       slides: ""
@@ -108,7 +124,9 @@ rows:
     hw: 7
 
   - weekno: ""
-    tut: ""
+    tut: 
+      topic: ""
+      slides: ""
     wed: 
       topic: "CHRISTMAS BREAK"
       slides: ""
@@ -121,7 +139,9 @@ rows:
     hw: -1
   
   - weekno: 2
-    tut: "Binomial Test, t-test (maybe ANOVA)"
+    tut: 
+      topic: "Binomial Test, t-test (maybe ANOVA)"
+      slides: ""
     wed: 
       topic: "Classical Testing 3"
       slides: ""
@@ -133,7 +153,9 @@ rows:
     hw: 8
 
   - weekno: 3
-    tut: "Model Comparison, Bayes Factors, LR Test, AIC"
+    tut: 
+      topic: "Model Comparison, Bayes Factors, LR Test, AIC"
+      slides: ""
     wed: 
       topic: "Bayesian Hypothesis Testing"
       slides: ""
@@ -145,7 +167,9 @@ rows:
     hw: 9
 
   - weekno: 4
-    tut: ""
+    tut: 
+      topic: ""
+      slides: ""
     wed: 
       topic: "Simple Linear Regression"
       slides: ""
@@ -157,7 +181,9 @@ rows:
     hw: 10
 
   - weekno: 5
-    tut: ""
+    tut: 
+      topic: ""
+      slides: ""
     wed: 
       topic: "Generalized Regression"
       slides: ""
@@ -169,7 +195,9 @@ rows:
     hw: 11
   
   - weekno: 6
-    tut: ""
+    tut: 
+      topic: ""
+      slides: ""
     wed: 
       topic: "Q&A"
       slides: ""
@@ -182,7 +210,9 @@ rows:
     hw: -1
 
   - weekno: 7
-    tut: ""
+    tut: 
+      topic: ""
+      slides: ""
     wed: 
       topic: "Cognitive Models in Data Analysis"
       slides: ""

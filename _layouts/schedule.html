@@ -15,12 +15,18 @@ wide-container: true
                 {{ week.weekno }}
             </div>
             <div class="schedule-cell">
-                {{ week.tut }}
+                {% if week.tut.slides != "" %}
+                    <a href="../{{week.tut.slides}}">
+                {% endif %}
+                        {{ week.tut.topic }}
+                {% if week.tut.slides != "" %}
+                    </a>
+                {% endif %}
             </div>
             <div class="schedule-cell">
                 <p class="bold {% if week.wed.alert %}alert{% endif %}">
                        {% if week.wed.slides != "" %}
-                       <a href="../slides/{{week.wed.slides}}">
+                       <a href="../{{week.wed.slides}}">
                        {% endif %}
                            {{ week.wed.topic }}
                        {% if week.wed.slides != "" %}
@@ -34,7 +40,7 @@ wide-container: true
             <div class="schedule-cell">
                 <p class="bold {% if week.fri.alert %}alert{% endif %}">
                     {% if week.fri.slides != "" %}
-                    <a href="../slides/{{week.fri.slides}}">
+                    <a href="../{{week.fri.slides}}">
                     {% endif %}
                         {{ week.fri.topic }}
                     {% if week.fri.slides != "" %}

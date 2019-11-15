@@ -75,7 +75,7 @@ body {
 	}
 }
 .container {
-	width: 41rem;
+	width: 40rem;
 	max-width: 650px;
 	padding: 15px;
 	@include center-block();
@@ -325,5 +325,55 @@ header .entry-meta {
 
 	@media #{$small} {
 		font-size: 3.5vw;
+	}
+}
+
+.details {
+	list-style-type: none;
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 2rem;
+
+	ul {
+		margin-block-start: 0;
+		margin-block-end: 0;
+		opacity: 0;
+		max-height: 0;
+		overflow: hidden;
+		transition: all ease-in-out 0.6s;
+	}
+
+	& .summary {
+		transition: color ease-in-out 0.4s
+	}
+
+	& .summary:hover {
+		color: $uni-red;
+		cursor: pointer;
+	}
+
+	& .summary.active {
+		i {
+			transform: rotate(90deg);
+		}
+	
+		& + ul {
+			opacity: 1;
+			max-height: 1000px;
+		}
+	}
+
+	.summary:focus {
+		outline-style: none;
+	}
+
+	.summary i {
+		font-size: 1.25rem;
+		margin-right: 0.5rem;
+		transition: transform ease-in-out 0.2s;
+	}
+
+	.summary::-webkit-details-marker {
+		display: none;
 	}
 }

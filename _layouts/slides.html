@@ -1,0 +1,52 @@
+---
+layout: page
+---
+{% assign currentLecture = 1 %}
+<div class="details">
+    <div class="summary"><i class="fa fa-chevron-right"></i>Lectures</div>
+        <ul>
+            {% for week in site.data.schedule.rows %}
+                    {% if week.wed.slides != "" %}
+                        <li>
+                            <a class="zoombtn" href="../{{week.wed.slides}}"><span>Lecture {{ currentLecture }}: {{ week.wed.topic }}</span></a>
+                            <a class="zoombtn" href="../{{week.wed.slides}}" download=""><i class="fa fa-download"></i></a>
+                        </li>
+                        {% assign currentLecture = currentLecture | plus: 1 %}
+                    {% endif %}
+                    {% if week.fri.slides != "" %}
+                        <li>
+                            <a class="zoombtn" href="../{{week.fri.slides}}"><span>Lecture {{ currentLecture }}: {{ week.fri.topic }}</span></a>
+                            <a class="zoombtn" href="../{{week.fri.slides}}" download=""><i class="fa fa-download"></i></a>
+                        </li>
+                        {% assign currentLecture = currentLecture | plus: 1 %}
+                    {% endif %}
+            {% endfor %}
+        </ul>
+</div>
+
+{% assign currentTut = 1 %}
+<div class="details">
+    <div class="summary"><i class="fa fa-chevron-right"></i>Tutorials</div>
+        <ul>
+            {% for week in site.data.schedule.rows %}
+                    {% if week.tut.slides != "" %}
+                        <li>
+                            <a class="zoombtn" href="../{{week.tut.slides}}"><span>Tutorial {{ currentTut }}: {{ week.tut.topic }}</span></a>
+                            <a class="zoombtn" href="../{{week.tut.slides}}" download=""><i class="fa fa-download"></i></a>
+                        </li>
+                        {% assign currentTut = currentTut | plus: 1 %}
+                    {% endif %}
+            {% endfor %}
+        </ul>
+</div>
+
+<script>
+    var summaries = document.querySelectorAll(".summary")
+    summaries.forEach(summary => {
+        summary.addEventListener("click", summaryClick, false)
+    });
+
+    function summaryClick() {
+        this.classList.toggle("active");
+    }
+</script>

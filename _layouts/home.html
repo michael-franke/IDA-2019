@@ -23,11 +23,6 @@ layout: site-wrapper
                 </h3>
                 <h3 class="title">
                     {% for link in site.data.navigation %}
-                    <!-- {% if link.url contains 'http' %}
-                    {% assign domain = '' %}
-                    {% else %}
-                    {% assign domain = site.url %}
-                    {% endif %} -->
                     <a class="btn zoombtn" href="{{ site.url }}/{{ link.url }}" {% if link.url contains 'http' %}
                         target="_blank" rel="noopener noreferrer" {% endif %}>
                         {{ link.title }}
