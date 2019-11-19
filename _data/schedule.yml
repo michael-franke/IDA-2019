@@ -54,7 +54,7 @@ rows:
   - weekno: 47
     tut: 
       topic: "More R, Wrangling, Summary Stats"
-      slides: ""
+      slides: "tutorials/Tutorial_2.zip"
     wed: 
       topic: "NO LECTURE"
       slides: ""
