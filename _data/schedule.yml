@@ -46,9 +46,9 @@ rows:
       slides: "slides/04-wrangling.pdf"
       chapter: 4
     fri: 
-      topic: "Summary Statistics"
+      topic: "NO LECTURE"
       slides: ""
-      chapter: 5
+      chapter: -1
     hw: 2
 
   - weekno: 47
@@ -61,23 +61,24 @@ rows:
       chapter: -1
       alert: true
     fri: 
-      topic: "Data Plotting"
-      slides: ""
-      chapter: 6
+      topic: "Summary Statistics"
+      slides: "slides/05-summary-stats.pdf"
+      chapter: 5
     hw: 3
   
   - weekno: 48
     tut: 
-      topic: "Plotting, More R Exercises"
+      topic: "Summary statistics"
       slides: ""
     wed: 
+      topic: "Plotting"
+      slides: ""
+      chapter: 6
+    fri: 
       topic: "Probability Basics"
       slides: ""
       chapter: 7
-    fri: 
-      topic: "Frequentism vs Bayes"
-      slides: ""
-      chapter: 8
+
     hw: 4
 
   - weekno: 49
