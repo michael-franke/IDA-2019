@@ -49,6 +49,7 @@ rows:
       topic: "NO LECTURE"
       slides: ""
       chapter: -1
+      alert: true
     hw: 2
 
   - weekno: 47

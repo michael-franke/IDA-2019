@@ -24,8 +24,8 @@ The total set of points accumulated by a participant for all homework sets will 
 
 **The following information is still preliminary!**
 
-The final exam will take place on Friday January 31st 2020.
-You will have four hours to complete the exam with calm focus.
+The final exam will take place on Friday February 7th 2020 at rooms 66/E33 and 66/E34.
+Starting at 16:00, you will have four hours to complete the exam with calm focus.
 You are allowed to bring 4 DIN A4 pages of **hand-written notes**. 
 No electronic devices, no photocopies, no prints. 
 
@@ -36,7 +36,7 @@ A retake is also possible for participants who failed to reach a passing grade i
 To qualify for a retake, however, you need to score at least 1/4 of the points in the final exam.
 It is not possible to use the retake to improve your grade if you reached a passing grade in the final exam the first time around.
 
-The material covered in the retake also contains the lectures given in calendar week 6 of 2020, i.e., the week *after* the final exam.
+The material covered in the retake also contains the lectures given in calendar week 7 of 2020, i.e., the week *after* the final exam.
 
 
 
