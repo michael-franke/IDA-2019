@@ -71,13 +71,13 @@ rows:
       topic: "Summary statistics"
       slides: ""
     wed: 
-      topic: "Plotting"
+      topic: "Plotting 1"
       slides: ""
       chapter: 6
     fri: 
-      topic: "Probability Basics"
+      topic: "Plotting 2"
       slides: ""
-      chapter: 7
+      chapter: 6
 
     hw: 4
 
@@ -86,18 +86,18 @@ rows:
       topic: "Probability Calculus, Bayes Rule"
       slides: ""
     wed: 
+      topic: "Probability Basics"
+      slides: ""
+      chapter: 7
+    fri: 
       topic: "Statistical Models"
       slides: ""
       chapter: 9
-    fri: 
-      topic: "Parameter Inference 1"
-      slides: ""
-      chapter: 10
     hw: 5
 
   - weekno: 50
     tut: 
-      topic: "Simulations on Error Control, Calculations with Bayes Rule"
+      topic: "Parameter Inference"
       slides: ""
     wed: 
       topic: "NO LECTURE"
@@ -105,14 +105,14 @@ rows:
       chapter: -1
       alert: true
     fri: 
-      topic: "Parameter Inference 2"
+      topic: "Parameter Inference"
       slides: ""
       chapter: 10
     hw: 6
 
   - weekno: 51
     tut: 
-      topic: "Sampling-based Approaches, Using R, Web PPL, greta"
+      topic: "Binomial Test, t-test (maybe ANOVA)"
       slides: ""
     wed: 
       topic: "Classical Testing 1"
@@ -121,7 +121,7 @@ rows:
     fri: 
       topic: "Classical Testing 2"
       slides: ""
-      chapter: 1
+      chapter: 11
     hw: 7
 
   - weekno: ""
