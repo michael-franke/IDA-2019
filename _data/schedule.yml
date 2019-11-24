@@ -84,7 +84,7 @@ rows:
 
   - weekno: 49
     tut: 
-      topic: "Probability Calculus, Bayes Rule"
+      topic: "Plotting"
       slides: ""
     wed: 
       topic: "Probability Basics"
@@ -98,7 +98,7 @@ rows:
 
   - weekno: 50
     tut: 
-      topic: "Parameter Inference"
+      topic: "Probability calculus, modeling"
       slides: ""
     wed: 
       topic: "NO LECTURE"
@@ -113,7 +113,7 @@ rows:
 
   - weekno: 51
     tut: 
-      topic: "Binomial Test, t-test (maybe ANOVA)"
+      topic: "Parameter inferences, computing Bayes rule"
       slides: ""
     wed: 
       topic: "Classical Testing 1"
