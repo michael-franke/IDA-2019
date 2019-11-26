@@ -3,14 +3,17 @@
 - title: Homework 1
   topic: "Basics of R"
   url: homework/01-basic-r.html
+  solution: homework/01-basic-r-solution.Rmd
   due_date: 2019-11-15
 
 - title: Homework 2
   topic: "Data wrangling"
   url: homework/02-wrangling.html
+  solution: ""
   due_date: 2019-11-22
   
 - title: Homework 3
   topic: "Summary Statistics"
   url: homework/03-summarizing.html
+  solution: ""
   due_date: 2019-11-27

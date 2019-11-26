@@ -1,0 +1,357 @@
+---
+title: "Homework Sheet 1 -- Basics in R"
+date: 'Due: Friday, November 15 by 11:59 CET'
+author: ""
+output:
+  html_document
+---
+# First Homework: R basics
+
+## Instructions
+* If you need help, take a look at the suggested readings in the lecture, make use of the [cheat sheets](https://rstudio.com/resources/cheatsheets/) and the help possibility in R
+* Make sure you have R and RStudio installed. If you are an advanced user and aren't using RStudio, make sure you have `rmarkdown` in order to 'knit' the HTML output.
+* Create an Rmd-file with your group number (equivalent to StudIP group) in the 'author' heading and answer the following questions.
+* When all answers are ready, 'Knit' the document to produce a HTML file.
+* Create a ZIP archive called "IDA_HW1-Group-XYZ.zip" (where 'XYZ' is *your* group number) containing:
+   * an R Markdown file "IDA_HW1-Group-XYZ.Rmd"
+   * a knitted HTML document "IDA_HW1-Group-XYZ.html"
+* Upload the ZIP archive on Stud.IP in your group folder before the deadline. You may upload as many times as you like before the deadline, only your final submission will count.
+
+## Introduction
+
+The first part of the homework should help you to get comfortable with Rmarkdown. Then we focus more on some basics that you have learned so far in R.
+
+In the following we will work with some "scientifically reasonable data" concerning the properties of some selected brain regions. The *variables* included in this data set are: "brain region", "average cortical thickness", "surface area" and "hemisphere" (left or right). The following graphic depicts where the selected brain regions are located:
+
+![Desikan Killiany atlas](brain.png)
+
+### 1. Task (5 points)
+
+Your first task is to start creating the Rmarkdown document, namely to:
+
+- input a reasonable title for the document, e.g., "IDA 2019: Homework 1"
+- create a first level head for each task using `# Task n`
+- for this first task create two additional headers:
+  + a level-2 header with title "The data set I: Creating a table in RMarkdown",
+  + a level-3 header with title "Overview of variables in the data set",
+- *re-create* the table depicted below in using Rmarkdown's own style of writing tables, 
+- *fill in* the missing entries (the *values* are ordered from left to right in the picture; "variable type" refers to nominal, ordinal, metric, etc.), 
+- take care that the first and second column are *centered* and the third column is *left*-oriented and
+- that the column names are *"bold"*.
+
+(*Note*: Use the provided [cheat sheets](https://rmarkdown.rstudio.com/lesson-15.html) for *RMarkdown* from RStudio to look up how to make headers, create a table, ect. in Rmd))
+
+## The data set I: Creating a Table in RMarkdown
+
+|**Variable**  |    **Variable type** | **Values**|
+|:--------------:|:------------------:|-----------------|
+|brain regions |  nominal    | (Rostral middle frontal, Precentral, Lateral Occipital, Transverse temporal, Temporal pole )|
+|surface area  |  metric     | (5941.8, 4718.8, 4672.9, 799.48, 443.3)|
+|thickness     |  metric     | (2.59, 2.74, 2.3, 2.52, 3.66)|
+|hemisphere    |  binary     | (L, L, L, R, R)|
+
+After having introduced the variables included in the data set, let us work with the data.
+
+### 2. Task (4 points)
+
+Before starting to work in R, we should *load the relevant packages* that we need in order to work with the data. 
+
+- create a level-2 header with title: "Loading relevant packages"
+- insert in your Rmd-file an R code chunk, in which you can type in the R code
+- load the package `tidyverse` (if you have not already installed the package you have first to install them by using `install.packages("tidyverse")`)
+- as we do not want to have all the *warnings* and *messages* (that usually appear while loading a package) in the knitted Rmd file, insert in your R chunk the option that the *warnings* and *messages* should not be printed in your knitted Rmd file.
+
+`< R CODE HERE >`
+
+```{r warning=FALSE, message=FALSE, include=FALSE}
+library(tidyverse)
+```
+
+### 3.Task (5 points)
+
+Now, we can start to create a tibble in R. 
+
+- create a level-2 header: "The data set II: Creating a tibble in R"
+- insert in your Rmd-file an R code chunk, in which you can type in the R code
+- store your tibble in a variable called  `brain_data` 
+- as *column names* we will use: `brain_regions`, `surface_area`, `thickness` and `hemisphere`,
+- as *values* you should use those from the above Rmd-table,
+- make the variable `brain_regions` a factor (when creating the tibble, use the keyword `factor` in the creating of this column)
+- *print* the tibble for display in your document
+
+(Hint: your tibble should have 4 columns and 5 rows eventually.)
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+brain_data <- tibble(
+  brain_regions = factor(c("Rostral middle frontal", "Precentral", "Lateral Occipital", "Transverse temporal", "Temporal pole")),
+  surface_area = c(5941.8, 4718.8, 4672.9, 334.56, 443.3),
+  thickness = c(2.59, 2.74, 2.3, 2.52, 3.66),
+  hemisphere = c("L", "L", "L", "R", "R")
+)
+brain_data
+```
+
+
+### 4. Task (3 points) 
+
+Oh no, we have done a little mistake! The brain region "Transverse temporal" should actually be represented as "Banks superior temporal". We have to change this level in the factor `brain_regions`.
+
+Give R Code that 
+
+ - changes the value "Transverse temporal" of the factor `brain_regions` into the right value "Banks superior temporal"
+ - to do this, use the function `fct_recode` from the `purrr` package (you can access the factor/colum using `brain_data$brain_regions`)
+ - print the `brain_data` again.
+ 
+The column `brain_regions` should now have the value "Banks superior temporal" instead of "Transverse temporal".
+
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+brain_data$brain_regions <- fct_recode(brain_data$brain_regions, "Banks superior temporal" = "Transverse temporal") %>% 
+  print()
+```
+
+### 5. Task (1 point) 
+
+Using indexing (like in a matrix), extract the `thickness` for the brain region "Precentral" from the tibble.
+
+- insert a R code chunk and
+- type in a code that prints the answer of the above question.
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+brain_data[2,3] %>% 
+  print()
+```
+
+
+### 6. Task (5 points) 
+
+Consider again the data set. Suppose you come across the information, that you can calculate the *volume* of brain regions with the given variables by the formula: volume = surface_area * thickness.
+
+Therefore, you decide to create a new tibble, named *brain_data2* from scratch.
+
+- create a second-level header: "The data set III: Creating a tibble in R"
+- insert in your Rmd-file a R code chunk, in which you can type in the R code
+- store your tibble in the variable `brain_data2
+- as *column names* and *values* we will use the same as above *but*
+- you should include a new variable `volume` whose values are calculated by multiplying `surface_area` with `thickness`
+- *print* the created tibble.
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+brain_data2 <- tibble(
+  brain_regions = c("Rostral middle frontal", "Precentral", "Lateral Occipital", "Banks superior temporal", "Temporal pole"),
+  surface_area = c(5941.8, 4718.8, 4672.9, 334.56, 443.3),
+  thickness = c(2.59, 2.74, 2.3, 2.52, 3.66),
+  hemisphere = c("L", "L", "L", "R", "R"),
+  volume = surface_area*thickness
+)
+brain_data2
+```
+
+### 7. Task (1 point)
+
+Why would it not work to use the same code to create a data frame instead of a tibble? 
+
+<!-- Because a data frame would not allow to create a column out of two columns, that were initially created in the same data frame.  -->
+`< ANSWER HERE >`
+
+## Miscellaneous: R basics
+
+In what follows, we'll play around with `brain_data2` to get used to R.
+
+### 8. Task (2 points)
+
+Write R code to
+
+- select only the column `brain_regions` from the data 
+- store it in a variable called `regions_v1` and
+- print this variable
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+regions_v1 <- brain_data2$brain_regions %>% 
+  print()
+```
+
+### 9. Task (1 point) 
+
+Write R code that returns the *data type* of `regions_v1`?
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+typeof(regions_v1)
+```
+
+### 10. Task (2 points) 
+
+Suppose you do not know the values of the variable `regions_v1` but you want to know *how many* brain regions are included. Write some R code that returns the length of the vector `regions_v1`.
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+length(regions_v1)
+```
+
+### 11. Task (1 point)
+
+Let us consider now again the whole data set `brain_data2`. Give R code which returns the number of different elements in the vector stored in column `hemisphere`. For this, you want to first call the function `unique` (which returns a vector with all and only unique elements) and then the function `length` (to get the length of that vector). Use the pipe operator `%>%` to do this.
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+brain_data2$hemisphere %>% unique %>% length
+```
+
+### 12. Task (2 points) 
+
+Describe in no more than 10 words what the goal of this code is
+
+```{r include=T, eval = F}
+brain_data2[str_detect(brain_data2$hemisphere, "R"),"brain_regions"]
+```
+
+`< ANSWER HERE >`
+
+### 13. Task (7 points) 
+
+Let us consider again the variable `volume` in the data set `brain_data2`. We can calculate the variable `volume` also by using a *function*. Which we will do now.
+
+*13.1* First,
+
+- extract column `surface_area` from the data set `brain_data2` and store it as variable `x`
+- do the same for the variabel `thickness` and store it as `y`
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+x <- brain_data2$surface_area
+y <- brain_data2$thickness
+```
+
+*13.2* Second, 
+
+- create a function that takes as input variables `x` and `y` and gives as output the multiplication of both
+- store the function under the name `volume_calc`
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+volume_calc <- function(x,y){return(x*y)}
+```
+
+*13.3* Third,
+
+- create a list and store it as `volume_compare`; the two list elements are
+- `volume1`, which is the column `volume` from the data set `brain_data2` and
+- `volume2`, which is the volume calculated by your function
+- print the list
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+volume_compare <- list(
+  volume1 = brain_data2$volume,
+  volume2 = volume_calc(x,y)
+) 
+volume_compare
+```
+
+### 14. Task (5 points) 
+
+Suppose that we have the chance to measure the volume of each brain region directly. Here are the directly measured values for volume:
+
+- Rostral middle frontal = 17439
+- Precentral = 14351
+- Lateral Occipital = 12150
+- Banks = 2386
+- Temporal pole = 2280.1
+
+*14.1* Create a new variable `volume_true` with the given values.
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+volume_true <- c(17439,14351,12150,2386,2280.1)
+```
+
+*14.2* Extract `volume1` from your created list `volume_compare` and store it as `volume_calculated`
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+volume_calculated <- volume_compare$volume1
+```
+
+*14.3* Write a new function that takes as 
+
+- input two variables `x` and `y` and
+- returns as output the difference between both input variables.
+- store the function as `volume_diff`
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+volume_diff <- function(x,y){return(x-y)}
+```
+
+### 15. Task (3 points) 
+
+Create a tibble with two variables: `brain_regions` (use `regions_v1`) and `calculated_volume`, which indicates the difference between the variables `volume_calculated` and `volume_true` (make use of your custom-built funtion). Store the tibble as "brain_data3" and print it.
+
+`< R CODE HERE >`
+
+```{r include=FALSE}
+brain_data3 <- tibble(
+  brain_regions = regions_v1,
+  calculated_volume = volume_diff(volume_calculated,volume_true)
+) 
+brain_data3
+```
+
+### 16. Task (3 points) 
+
+Look at the following formula and the output that it returns.
+What does this formula do? Can you give a question for which this formula returns the answer?
+
+Hint: Use for example the help-possibility in R in order to understand what `which.min`does.
+
+```{r}
+brain_data3[which.min(brain_data3$calculated_volume),1]
+```
+<!--Attention here!
+We have not used in `brain_data3$calculated_volume` the absolute difference. Therefore, negative numbers are the result. 
+In consequence the answer of the minimal "volume-difference" is "Rostral middle frontal" (i.e. the greatest difference!).
+But I have seen that a lot of students used the absolute difference (abs()), by computing the `calculated_volume`. If they reason about their own created data set, then the code in question should actually give the *smallest* volume-difference.
+As this mistake occurs through an imprecise task instruction I would suggest to give everyone the points.
+Would do you think?--!>
+
+### 17. Task (4 points)
+
+Here's a vector with some interesting names:
+
+```{r}
+family <- c("Gomez", "Morticia", "Pugsley", "Wednesday", "Uncle Fester", "Grandma")
+```
+
+Use the function `map_chr` (which is an iterator that returns a character vector) and a custom-made anonymous function which uses the function `str_c` (which concatenates strings) to append the string `" Adams"` to all family members, except Uncle Fester and Grandma. The output should look like this:
+
+```{r, echo = F}
+map_chr(
+  family,
+  function(member) {
+    ifelse(member %in% c("Uncle Fester", "Grandma"),
+           member,
+           str_c(member, " Adams"))
+  }
+)
+```
+

@@ -1,13 +1,44 @@
 ---
 layout: page
 ---
-{% for assignment in site.data.homework %}
-<ul>
-    <li>
-        <a class="zoombtn" href="../{{assignment.url}}"><span>{{ assignment.title }}</span></a>
-        <a class="zoombtn" href="../{{assignment.url}}" download=""><i class="fa fa-download"></i></a>
-        <p class="topic">{{ assignment.topic }}</p>
-        <p> Due date: {{ assignment.due_date }}</p>
-    </li>
-</ul>
-{% endfor %}
+<div class="details">
+    <div class="summary"><i class="fa fa-chevron-right"></i>Homework Sheets</div>
+        <ul>
+            {% for assignment in site.data.homework %}
+                    {% if assignment.url != "" %}
+                        <li>
+                            <a class="zoombtn" href="../{{assignment.url}}"><span>{{ assignment.title }}</span></a>
+                            <a class="zoombtn" href="../{{assignment.url}}" download=""><i class="fa fa-download"></i></a>
+                            <p class="topic">{{ assignment.topic }}</p>
+                            <p> Due date: {{ assignment.due_date }}</p>
+                        </li>
+                    {% endif %}
+            {% endfor %}
+        </ul>
+</div>
+
+<div class="details">
+    <div class="summary"><i class="fa fa-chevron-right"></i>Solutions</div>
+        <ul>
+            {% for assignment in site.data.homework %}
+                    {% if assignment.solution != "" %}
+                        <li>
+                            <a class="zoombtn" href="../{{assignment.solution}}"><span>{{ assignment.title }}</span></a>
+                            <a class="zoombtn" href="../{{assignment.solution}}" download=""><i class="fa fa-download"></i></a>
+                            <p class="topic">{{ assignment.topic }}</p>
+                        </li>
+                    {% endif %}
+            {% endfor %}
+        </ul>
+</div>
+
+<script>
+    var summaries = document.querySelectorAll(".summary")
+    summaries.forEach(summary => {
+        summary.addEventListener("click", summaryClick, false)
+    });
+
+    function summaryClick() {
+        this.classList.toggle("active");
+    }
+</script>
