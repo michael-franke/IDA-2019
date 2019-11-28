@@ -70,7 +70,7 @@ rows:
   - weekno: 48
     tut: 
       topic: "Summary statistics"
-      slides: ""
+      slides: "tutorials/Tutorial_3.zip"
     wed: 
       topic: "Plotting 1"
       slides: "slides/06-plotting.pdf"
