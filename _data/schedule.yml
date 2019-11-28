@@ -73,11 +73,11 @@ rows:
       slides: ""
     wed: 
       topic: "Plotting 1"
-      slides: ""
+      slides: "slides/06-plotting.pdf"
       chapter: 6
     fri: 
       topic: "Plotting 2"
-      slides: ""
+      slides: "slides/06-plotting.pdf"
       chapter: 6
 
     hw: 4
