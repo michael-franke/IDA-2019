@@ -1,0 +1,303 @@
+---
+title: "Homework Sheet 2 -- Data Wrangling"
+date: 'Due: Friday, November 22 by 11:59 CET'
+author: ""
+output:
+  html_document
+---
+# First Homework: Data wrangling & summary statistics
+
+**Instructions**
+
+* If you need help, take a look at the suggested readings in the lecture, make use of the [cheat sheets](https://rstudio.com/resources/cheatsheets/) and the help possibility in R
+* Create an Rmd-file with your group number (equivalent to StudIP group) in the 'author' heading and answer the following questions.
+* When all answers are ready, 'Knit' the document to produce a HTML file.
+* Create a ZIP archive called "IDA_HW1-Group-XYZ.zip" (where 'XYZ' is *your* group number) containing:
+   * an R Markdown file "IDA_HW1-Group-XYZ.Rmd"
+   * a knitted HTML document "IDA_HW1-Group-XYZ.html"
+* Upload the ZIP archive on Stud.IP in your group folder before the deadline. You may upload as many times as you like before the deadline, only your final submission will count.
+* Include an R code chunk in your Rmarkdown file (the preamble) in which you set the following global options for the document, and set the options for this code chunk to `echo = F` (so as not to have it show up in your output):
+
+```{r}
+knitr::opts_chunk$set(
+  warning = FALSE, # supress warnings per default 
+  message = FALSE  # supress messages per default 
+)
+```
+
+* Then include a code chunk which loads all required packages (which is just `tidyverse`). Make sure that this code chunk, too, will not show in your output, using `echo = F`.
+
+```{r echo = F}
+library(tidyverse)
+```
+
+* When chaining operations, please try to use the pipe `%>%` wherever reasonable. We will not indicate in a task explicitly that the pipe should be used, but we expect that you do it as a default of elegance.
+
+### Exercise 1: Fictitious data from a button-press reaction time experiment
+
+#### Exercise 1.A: Tidy up the mess (20 points)
+
+Here's a messy data set from an experiment in which participants saw three critical conditions, and had to respond with pressing a button for either option A or option B. There were four participants in the experiment, identified anonymously in variable `subject_id`. The button press and associated reaction times of each of three trials are stored, respectively, in columns `choices` and `reaction_times` (in milliseconds) in a string which separates the data from different trials either with a comma (for `choices`) or a single white space (for `reaction_times`). 
+
+```{r}
+messy_data <- tribble(
+  ~subject_id,  ~choices,  ~reaction_times,
+  1,            "A,B,B",   "312 433 365",
+  2,            "B,A,B",   "393 491 327",
+  3,            "B,A,A",   "356 313 475",
+  4,            "A,B,B",   "292 352 378"
+)
+```
+
+Use tidyverse tools to tidy up this data set. Please make sure that your output looks *exactly* like this:
+
+```{r echo = F}
+# solution
+choice_data <- messy_data %>% 
+  # separate choices
+  separate(
+    col  = choices, 
+    into = str_c("C_", 1:3),
+    sep = ","
+    ) %>% 
+  # make longer
+  pivot_longer(
+    cols      = contains("C_"), 
+    names_to  = "condition",
+    values_to = "response" 
+  )
+
+RT_data <- messy_data %>% 
+  # separate RTs
+  separate(
+    col  = reaction_times, 
+    into = str_c("C_", 1:3),
+    sep = " ",
+    convert = T
+    ) %>% 
+  # make longer
+  pivot_longer(
+    cols      = contains("C_"), 
+    names_to  = "condition",
+    values_to = "RT" 
+  )
+
+tidy_data <- full_join(choice_data, RT_data, by = c("subject_id", "condition")) %>% 
+  select(subject_id, condition, response, RT)
+tidy_data
+```
+
+**Hint:** There are many ways to Rome. One way leading to the current Rome is to tidy up `messy_data` in two steps. Create a tidy data set for the choice data (using some combination of `separate`, a pivoting function and possibly `select`), and another one for the reaction time data (using basically the same chain of operations). You would then use a joining operation, e.g., `full_join`, possibly followed by massaging the output one more time with `select`. Careful: make sure that the column `RT` in the final output is of type `numeric` (integer or double does not matter).
+
+#### Exercise 1.B: Summarize the reaction times (8 points)
+
+Use the final tidy representation of the `messy_data` from the previous exercise, stored in a variable `tidy_data`. If you have not managed to produce this representation with tools from the tidyverse, you can write the desired tibble by hand (without loss of points for this exercise). Produce a summary table of mean reaction times per condition, using the tools from the tidyverse. Your output should look like this:
+
+```{r echo = F}
+tidy_data %>% 
+  group_by(condition) %>% 
+  summarise(mean_RT = mean(RT))
+```
+
+Now produce a table giving the mean reaction times for each participant. But make sure that, in this case, the mean reaction times are rounded to full integers. (**Hint:** you can use `mutate` in a final step or round inside of a call to `summarise`). The output should look like this:
+
+```{r echo = F}
+tidy_data %>% 
+  group_by(subject_id) %>% 
+  summarise(mean_RT = mean(RT) %>% round)
+```
+
+
+### Exercise 2: The King of France visits IDA
+
+We will work with the *King of France* experiment, in particular with the data generated by participants of this course. For a detailed description of the theoretical background and the procedure look into the [Appendix D.4](https://michael-franke.github.io/intro-data-analysis/app-93-data-sets-king-of-france.html) of your lecture script. 
+
+Here is a condensed description of the materials. The data set consists of five **vignettes**:
+
+- V1. The King of France is bald.
+- V2. The Emperor of Canada is fond of sushi.
+- V3. The Pope's wife is a lawyer.
+- V4. The Belgian rainforest provides a habitat for many species.
+- V5. The volcanoes of Germany dominate the landscape.
+
+Where each vignette consists of five **critical conditions**. The following five sentences are examples of the critical conditions for the first vignette.
+
+- C0. The king of France is bald.
+- C1. France has a king, and he is bald.
+- C6. The King of France isn't bald.
+- C9. The King of France, he did not call Emmanuel Macron last night.
+- C10. Emmanuel Macron, he did not call the King of France last night.
+
+Additionally, for each vignette there exists a **background check**. This sentence is intended to find out whether participants know whether the relevant presuppositions are true. The five background checks are:
+
+- BC1. France has a king.
+- BC2. The Pope is currently not married.
+- BC3. Canada is a democracy.
+- BC4. Belgium has rainforests.
+- BC5. Germany has volcanoes.
+
+Finally, there are also 110 **filler sentences**, which do not have a presupposition, but also require common world knowledge for a correct answer. We will use the filler sentences also as controls, because there is a "correct" answer to each of these.
+
+#### Exercise 2.A: Experimental design (10 points)
+
+Look into the procedure described in the [Appendix D.4](https://michael-franke.github.io/intro-data-analysis/app-93-data-sets-king-of-france.html) of your script and answer the following questions:
+
+1. Is the "King of France" experiment an instance of a factorial design? If so, what is/are the factor(s), and what are the levels of each factor?
+<!-- Correct answer: It's a one-factor factorial design. The factor is 'condition' and it has five levels: C0, C1, C6, ... Vignette is NOT a factor. This is item-level variation to make sure that we are not too repetitive. This shows in there not being any theoretically motivated hypothesis that hinges on a contrast or comparison among vignettes. We treat each vignette equal for all current purposes (until we engage in hierarchical modeling). THIS IS SOMETHING THAT THE TUTORIAL SHOULD ELABOROATE ON !!  -->
+2. Is this experiment a within-subjects or a between-subjects design?
+<!-- within : every participant gives one observation for each design cell (each condition) -->
+3. Give one *advantage* and one *disadvantage* for this design-type (within- vs between-subjects).
+<!-- - fewer participants needed -->
+<!-- - possible cross-contamination between conditions -->
+4. Is this experiment a repeated-measures design?
+<!-- No: every participant gives exactly one data point for each design cell -->
+5. Indicate the *dependent variable* of the experiment (give the column name in the data representation) and the corresponding *variable type*.
+<!-- dependent variable:  "Response" -->
+<!-- - variable type "binary" (TRUE/FALSE) (also accept "Boolean" or "Logical" as an answer) -->
+
+#### Exercise 2.B: Exploring IDA's King of France (14 points)
+
+##### Load and inspect the data
+
+Load the data from the in-class replication, using the following code:
+
+```{r}
+data_KoF_raw_IDA <- 
+  read_csv(url('https://raw.githubusercontent.com/michael-franke/intro-data-analysis/master/data_sets/king-of-france_data_raw_IDA.csv'))
+```
+
+At this moment you should familiarize yourself with the data, e.g., by using `glimpse` or `View` (the latter only works in RStudio). After getting familiar with the data, answer the following questions (using appropriate and concise R code, which you should also reproduce as part of your answers to be submitted):
+
+1. How many rows does the data set in `data_KoF_raw_IDA` contain? (**Hint**: use the `nrow` function!)
+```{r, echo = F, eval = F}
+nrow(data_KoF_raw_IDA)
+```
+2. How many participants took part in the study? (**Hint**: use a sequence of operations `pull`, `unique` and `length`.)
+```{r, echo = F, eval = F}
+data_KoF_raw_IDA %>% pull(submission_id) %>% unique %>% length
+```
+3. Print and inlcude in your HTML document a list of all comments given in the experiment, but printing each unique comment only once.
+```{r, echo = F, eval = F}
+data_KoF_raw_IDA %>% pull(comments) %>% unique
+```
+4. Print and inlcude in your HTML document a list of all answers given to the `languages` question, but printing each unique comment only once.
+```{r, echo = F, eval = F}
+data_KoF_raw_IDA %>% pull(languages) %>% unique
+```
+5. Calculate the grand average of the variable `age`, i.e., calculate the average age of every participant. (**Hint**: As soon as a vector contains missing data (an entry `NA`), it's mean is `NA` as well. Try removing the missing values when calculating the mean, e.g., by checking the documentation of the function `mean` for anything helpful.)
+```{r, echo = F, eval = F}
+data_KoF_raw_IDA %>% pull(age) %>% mean(na.rm=T)
+```
+6. Use the `summary` function to produce the **five-number summary** of the variable `age`. (NB: you do not need to remove `NA`s for this function.)  The output of the `summary`function shows a *set of descriptive statistics* that is often referred to as **five-number summary** (see for further explanation e.g. [Five-number summary](https://en.wikipedia.org/wiki/Five-number_summary). It consists of the mean and the five most important sample percentiles: the sample minimum, the 0.25 quantile or first quartile, the 0.5 quantile or median, the 0.75 quantile or third quartile, the sample maximum.
+```{r, echo = F, eval = F}
+data_KoF_raw_IDA %>% pull(age) %>% summary()
+```
+7. Give the type of each of the following variables included in the data set (i.e., state whether it is ordinal, metric, etc.).
+- submission_id: 
+<!-- nominal -->
+- RT: 
+<!-- metric -->
+- correct: 
+<!-- binary -->
+- education: 
+<!-- ordinal -->
+- item_version:
+<!-- nominal -->
+- question: 
+<!-- nominal -->
+- response: 
+<!-- binary -->
+- timeSpent: 
+<!-- metric -->
+- trial_name: 
+<!-- nominal -->
+- trial_number: 
+<!-- metric -->
+- trial_type: 
+<!-- nominal -->
+- vignette
+<!-- nominal -->
+
+#### Preprocessing the data 
+
+##### Selecting and creating the relevant columns (6 points)
+
+Follow the preprocessing steps executed in the script up to (but not including) Section 4.5.3 (on cleaning). That is, copy-paste the code from the last code box in Section D.4.2 of the script to add the new column `condition` just like done in the script. Store the result in a variable called `data_KoF_preprocessed_IDA` and select only the columns `submission_id`, `trial_number`, `condition`, `vignette`, `question`, `correct`, `response` (in that order).
+
+```{r, echo = F}
+data_KoF_preprocessed_IDA <- data_KoF_raw_IDA %>% 
+  # discard practice trials
+  filter(trial_type != "practice") %>% 
+  # add a 'condition' variable
+  mutate(
+    condition = case_when(
+      trial_type == "special" ~ "background check",
+      trial_type == "main" ~ str_c("Condition ", item_version),
+      TRUE ~ "filler"
+    ) %>% 
+      # make the new 'condition' variable a factor
+      factor( 
+        ordered = T,
+        levels = c(
+          str_c("Condition ", c(0, 1, 6, 9, 10)), 
+          "background check", "filler"
+        )
+      )
+  ) %>% 
+  # discard unnecessary columns
+  select(submission_id, trial_number, condition, vignette, question, correct, response)
+```
+
+Your output should look like this:
+
+```{r}
+data_KoF_preprocessed_IDA
+```
+
+##### Tidy? (4 points)
+
+Is this last data representation tidy? Why (not)?
+
+It is not tidy since the condition "each variable forms a column" is not met. It is not tidy to have both "response" and "correct" as columns in this dataset. This is because the information whether the response in a given row is correct is redundantly represented. It is always the case that, say, true  as a response to condition XYZ is correct or not. If we store information about condition XYZ and the response, storing whether that is correct should be stored in a reduced (tidy) secondary data frame, strictly speaking. Another way of looking at it is that correctness is a deterministic function of two (or three?) other columns. That's at best almost tidy.
+
+#### Towards testing a hypothesis (20 points)
+
+Section D.4.1.2 of the script lists a number of research questions that we could raise for this data set. Let's focus on the second, reproduced here:
+
+2. Is there a difference in (binary) truth-value judgements (aggregated over all vignettes) between C0 (with presupposition) and C1 (where the presupposition is part of the at-issue / asserted content)?
+
+While we are still far from performing a statistical analysis, we do already have the tools to get at least an indicative pair of numbers that might help address this question, namely the proportion of "true"-judgements in condition C0 and those in C1. Compute these proportions by:
+
+- starting with the data stored in `data_KoF_preprocessed_IDA`
+- filtering out all rows other than data from critical conditions C0 and C1 (**Hint**: you might find the operator `%in%` very useful, which tests whether some element is included in a vector, e.g., as in the expression `condition %in% c("Condition 0", "Condition 1")`)
+- grouping by the variable `condition`
+- using `summarise` to obtain the proportion of true judgements (**Hint**: if `x` is a boolean vector, then `mean(x)` will cast `x` into an integer vector representing each entry of `TRUE` as `1` and each entry of `FALSE` as `0`, so that the mean will be exactly the proportion of occurrences of `TRUE` in the vector `x`.)
+
+Your final output should look like this:
+
+```{r, echo = F}
+data_KoF_preprocessed_IDA %>% 
+  filter(condition %in% c("Condition 0", "Condition 1")) %>% 
+  group_by(condition) %>% 
+  summarise(proportion_true = mean(response))
+```
+
+Notice that there is a perceptible difference in these numbers, but we will yet need to learn about ways of translating such numbers into mental currency, i.e., methods of translating such numbers (or the data that produced them) into statements of evidence (such as: "The data provides evidence that the conditions are different.") or into decision criteria regarding whether to act as if we knew beyond doubt whether the proportions are equal or not. This is what we will learn in the remainder of this course.
+
+
+<!-- ### Exercise XXX (3 points) -->
+
+<!-- Caluclate by hand the covariance between vectors $x = \langle 2, 1, 4, 6, 9 \rangle$ and $y = \langle 11, 9, 4, 5, 3 \rangle$. -->
+
+<!-- ### Exercise XXX (10 points) -->
+
+<!-- Give a mathematical proof of the claim that Pearson's product-moment correlation is invariant under positive linear transformation. I.e., show that if $x$ and $y$ are one-dimensional vectors (of the same length $n$), and if $x' = ax + b$ with $a,b \in \mathbb{R}, a > 0$, then $r_{xy} = r_{x'y}$. -->
+
+<!-- To show this, follow the following steps: -->
+
+<!-- a. Show that Pearson's correlation can be written in terms of standardized vectors $z_{x}$ and $z_{y}$, where $z_{x_i} = \frac{x_i - \mu_{x}}{s_x}$ and similarly for $z_y$. In particular, show that $r_{xy} = \frac{1}{n} \sum_{i = 1}^n z_{x_i} \ z_{y_i}$. -->
+<!-- b. Show that $\mu_{x'} = a\ \mu_{x} + b$. -->
+<!-- c. Show that $sd_{x'} = a\ sd_x$. -->
+<!-- d. Using the facts in a.-c., proof the invariance claim. -->
+
+

@@ -9,7 +9,7 @@
 - title: Homework 2
   topic: "Data wrangling"
   url: homework/02-wrangling.html
-  solution: ""
+  solution: "homework/02-wrangling-solution.Rmd"
   due_date: 2019-11-22
   
 - title: Homework 3
