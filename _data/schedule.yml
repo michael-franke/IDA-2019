@@ -85,7 +85,7 @@ rows:
   - weekno: 49
     tut: 
       topic: "Plotting"
-      slides: "tutorials/Tutorial_4.Rmd"
+      slides: "tutorials/Tutorial_4.zip"
     wed: 
       topic: "Probability Basics"
       slides: "slides/07-probability.pdf"
