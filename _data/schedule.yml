@@ -99,7 +99,7 @@ rows:
   - weekno: 50
     tut: 
       topic: "Probability calculus, modeling"
-      slides: ""
+      slides: "tutorials/Tutorial_5.zip"
     wed: 
       topic: "NO LECTURE"
       slides: ""
