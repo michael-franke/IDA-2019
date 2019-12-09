@@ -1,0 +1,247 @@
+---
+title: "Homework Sheet 3 -- Summary Statistics"
+date: 'Due: Friday, November 29 by 11:59 CET'
+author: ""
+output:
+  html_document
+---
+# General Instructions
+
+* If you need help, take a look at the suggested readings in the lecture, make use of the [cheat sheets](https://rstudio.com/resources/cheatsheets/) and the help possibility in R
+* Create an Rmd-file with your group number (equivalent to StudIP group) in the 'author' heading and answer the following questions.
+* When all answers are ready, 'Knit' the document to produce a HTML file.
+* Create a ZIP archive called "IDA_HW3-Group-XYZ.zip" (where 'XYZ' is *your* group number) containing:
+   * an R Markdown file "IDA_HW3-Group-XYZ.Rmd"
+   * a knitted HTML document "IDA_HW3-Group-XYZ.html"
+* Upload the ZIP archive on Stud.IP in your group folder before the deadline. You may upload as many times as you like before the deadline, only your final submission will count.
+* Include an R code chunk in your Rmarkdown file (the preamble) in which you set the following global options for the document, and set the options for this code chunk to `echo = F` (so as not to have it show up in your output):
+
+```{r}
+knitr::opts_chunk$set(
+  warning = FALSE, # supress warnings per default 
+  message = FALSE  # supress messages per default 
+)
+```
+
+* Then include a code chunk which loads all required packages (which is just `tidyverse`). Make sure that this code chunk, too, will not show in your output, using `echo = F`.
+
+```{r echo = F}
+library(tidyverse)
+```
+
+* When chaining operations, please try to use the pipe `%>%` wherever reasonable. We will not indicate in a task explicitly that the pipe should be used, but we expect that you do it as a default of elegance.
+
+
+# Exercise 1: Preparing the YouTube data
+
+In this exercise we will be exploring data on views and likes/dislikes from YouTube users in the US and Germany.
+The data consists of three data sets which we will load, plug together and then explore.
+
+## Reading & inspecting the data  (4 Points)
+
+Read the data into R from the following URLs. Store the data in variables `YouTube_data_US` `YouTube_data_DE` and `YouTube_data_categories`. Careful: the data in the "categories" data set is stored with the delimiter `;`, not `,` despite the file ending ".csv". You therefore need to use the function `read_delim` and specify the correct delimiter.
+
+(NB: There might well be warnings about parsing failures, but you do not need to worry about them.)
+
+```{r}
+
+url_prefix <- "https://raw.githubusercontent.com/michael-franke/intro-data-analysis/master/data_sets/"
+url_us  <- str_c(url_prefix, "YouTube-US.csv")
+url_de  <- str_c(url_prefix, "YouTube-DE.csv")
+url_cat <- str_c(url_prefix, "YouTube-categories.csv")
+```
+
+```{r, echo = F}
+YouTube_data_US <- read_csv(url(url_us))
+YouTube_data_DE <- read_csv(url(url_de))
+YouTube_data_categories <- read_delim(url(url_cat), delim = ";")
+```
+
+Print a glimpse of all three data sets
+
+```{r, echo = F, eval = F}
+YouTube_data_US %>% glimpse
+YouTube_data_DE %>% glimpse
+YouTube_data_categories %>% glimpse
+```
+
+## Pruning the data (2 points)
+
+Discard all columns except `title`, `channel_title`, `category_id`, `tags`, `views`, `likes`, `dislikes`, `comment_count` from `YouTube_data_US` and `YouTube_data_DE`.
+
+```{r, echo = F}
+YouTube_data_US <- YouTube_data_US %>% 
+  select(
+    title, channel_title, category_id, tags, views, likes, dislikes, comment_count
+  ) 
+YouTube_data_DE <- YouTube_data_DE %>% 
+  select(
+    title, channel_title, category_id, tags, views, likes, dislikes, comment_count
+  ) 
+```
+
+## Adding a column `country` (2 points)
+
+Add a new column that indicates the country to each of `YouTube_data_US` and `YouTube_data_DE`. Concretely, add a column `country` with entry "US" to `YouTube_data_US` and entry "GER" to `YouTube_data_DE`.
+
+(Hint: If you specify a vector of length 1 inside of `mutate` it will expand this to a vector of the length of the data you are adding to.)
+
+```{r, echo = F}
+YouTube_data_DE <- YouTube_data_DE %>% 
+  mutate(
+    country = "GER"
+  ) 
+
+YouTube_data_US <- YouTube_data_US %>% 
+  mutate(
+    country = "US"
+  ) 
+```
+
+## Binding data sets (2 points)
+
+Create a new data set out of `YouTube_data_US`and `YouTube_data_DE` by combining them row-wise. In other words, glue both data sets vertically together and save the new combined data set as `YouTube_data_combined`. Print a count of the number of rows in the new data set.
+
+```{r, echo = F, eval = T}
+YouTube_data_combined <- rbind(YouTube_data_DE,YouTube_data_US)
+```
+
+```{r, eval = F, echo = F}
+YouTube_data_combined %>% nrow
+```
+
+## Joining data sets (2 points) 
+
+The `YouTube_data_categories` data set has three columns whereby it shares one of these columns, namely `category_id`, with the data set `YouTube_data_combined`. The columns `category_name` and `category_description` of the data set `YouTube_data_categories` might be helpful in the analysis later. Therefore, we want to join the information from both sources into a single data set. 
+
+Join the information of the data sets `YouTube_data_combined` and `YouTube_data_categories` and save the new data set as `YouTube_data_full`. Take a glimpse at it.
+
+(Hint: Make use of `full_join` and use the appropriate column for the parameter `by` of that function.)
+
+```{r, echo = F, eval = F}
+YouTube_data_full <- full_join(YouTube_data_combined,YouTube_data_categories, by = "category_id") %>% 
+  glimpse
+```
+
+The outcome of this preprocessing is also stored in a data set available online, with which the following exercise will continue.
+
+# Exercise 2: Exploring the YouTube data
+
+## Load the pre-processed YouTube data (2 points)
+
+Load the pre-processed YouTube data into variable `YouTube_data_full` from the following URL:
+
+```{r}
+url_prefix <- "https://raw.githubusercontent.com/michael-franke/intro-data-analysis/master/data_sets/"
+url_full  <- str_c(url_prefix, "YouTube-full.csv")
+```
+
+```{r, echo = F}
+YouTube_data_full <- read_csv(url(url_full))
+```
+
+## Sorting by mean likes (4 pages)
+
+Calculate the mean values of `likes` (to be stored in column `mean_likes`) and `dislikes` (to be stored in column `mean_dislikes`) for each combination of entries in columns `category_name` and `country`. Order the resulting tibble by `mean_likes` in descending order. The output should look roughly as follows:
+
+```{r, echo = F}
+YouTube_data_full %>% 
+  group_by(category_name, country) %>% 
+  summarise(
+    mean_likes = mean(likes),
+    mean_dislikes = mean(dislikes)
+  ) %>%
+  arrange(desc(mean_likes))
+```
+
+## Most viewed music video in Germany (4 points)
+
+Find the title of the video with the most views in the category "Music" in Germany and the number of views and likes it has.
+
+```{r echo = F, eval = F}
+YouTube_data_full %>% 
+  select(title, views, country, likes, category_name) %>% 
+  filter(views == max(views) & country == "GER" & category_name == "Music")
+```
+
+## Counts of categories (6 points)
+
+How many instances are there for each category (column `category_name`) in the data set? - Sort the list of counts in ascending order.
+
+```{r, echo = F, eval = F}
+YouTube_data_full %>% 
+  dplyr::count(category_name) %>% 
+  arrange(n)
+```
+
+Now find the category whose number of occurrences is the median of all counts of category occurences.
+
+
+## Compare means and median (6 points)
+
+Select the columns `country`, `likes`, `dislikes` and `category_name`, then group the data set by `country`and `category_name`. Filter only the categories "Music" and "Science & Technology" and summarize the data set by calculating the mean and median for "likes" (name the summary-columns in a reasonable manner). The output should look (roughly) like this:
+
+```{r, echo = F, eval = T}
+YouTube_data_full %>% 
+  select(country, likes,dislikes, category_name) %>% 
+  group_by(country, category_name) %>% 
+  filter(category_name %in% c("Music", "Science & Technology")) %>% 
+  summarise(
+    likes_mean = mean(likes),
+    likes_median = median(likes)
+  )
+```
+
+What could be a reasonable explanation for the difference between the values for **median** and **mean** for the category "Music" in the German data?
+
+# Exercise 3: write a function that recovers the mode (12 points)
+
+In this exercise you will write a function that recovers the mode of a categorical variable, which is supplied either as a character vector or a factor. There are many ways to do this, but for this execise we will use the tools of the tidyverse, in particular counting and filtering for maximal counts.
+
+Concretely, write a function `mode_of_factor` which takes as input a single vector (character or factor) and returns the elements that occur most frequently in this vector. If there are more than one element that have the highest number of occurrences, the function returns all of these values. To achieve this, you could do the following:
+
+- add the input vector as a column to a tibble
+- use `count` (or similar) to count the number of occurrences for all elements in the vector
+- filter out the rows whose count is equal to the maximal count in the column with all counts
+- return the names of the elements left after filtering, ideally as a character vector
+
+```{r, echo = F, eval = F}
+input_vector = c("huhu", "huhu", "baba", "baba", "gugu") 
+input_vector2 = c("huhu", "huhu", "baba", "gugu") %>% factor
+mode_for_factor <- function(input_vector) {
+    tibble(input = input_vector) %>% 
+    dplyr::count(input) %>% 
+    filter(n == max(n)) %>% 
+    pull(input) %>% 
+    as.character
+}
+mode_for_factor(input_vector)
+mode_for_factor(input_vector2)
+```
+
+# Exercise 4: Toying with mean and median (6 points)
+
+Give an example of a metric vector and a single number such that adding the number to the vector does not change the median at all, but does change the mean drammatically. (Use R for the calculation of mean and median, so that there are no lingering doubts about how exactly to compute the median in case of ties etc.)
+
+```{r, eval = F, echo = F}
+x <- c(1,2,2,4)
+y <- 100
+z <- c(x,y)
+mean(x)
+median(x)
+mean(z)
+median(z)
+```
+
+# Exercise 5: LaTeX in Rmarkdown (6 points)
+
+Produce the formula in the definition of the mean and variance of vector $\vec{x}$ as they appear in the course script inside of Rmarkdown.
+
+## Mean
+$$\mu_\vec{x} = \frac{1}{n} \sum_{i=1}^n x_i $$
+
+## Variance
+$$Var(\vec{x}) = \frac{1}{n} \sum \limits_{i=1}^n {(x_i - \mu_\vec{x})^2}$$
+
+
+

@@ -15,7 +15,7 @@
 - title: Homework 3
   topic: "Summary Statistics"
   url: homework/03-summarizing.html
-  solution: ""
+  solution: "homework/03-summarizing-solution.Rmd"
   due_date: 2019-11-27
 
 - title: Homework 4
