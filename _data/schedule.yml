@@ -87,18 +87,19 @@ rows:
       topic: "Plotting"
       slides: "tutorials/Tutorial_4.zip"
     wed: 
+      topic: "NO LECTURE"
+      slides: ""
+      chapter: -1
+      alert: true
+    fri: 
       topic: "Probability Basics"
       slides: "slides/07-probability.pdf"
       chapter: 7
-    fri: 
-      topic: "Statistical Models"
-      slides: ""
-      chapter: 9
-    hw: 5
+      hw: 5
 
   - weekno: 50
     tut: 
-      topic: "Probability calculus, modeling"
+      topic: "Probability calculus"
       slides: "tutorials/Tutorial_5.zip"
     wed: 
       topic: "NO LECTURE"
@@ -106,23 +107,23 @@ rows:
       chapter: -1
       alert: true
     fri: 
-      topic: "Parameter Inference"
+      topic: "Models"
       slides: ""
-      chapter: 10
+      chapter: 8
     hw: 6
 
   - weekno: 51
     tut: 
-      topic: "Parameter inferences, computing Bayes rule"
+      topic: "Probability calculus, models"
       slides: ""
     wed: 
-      topic: "Classical Testing 1"
+      topic: "Parameter Inference 1"
       slides: ""
-      chapter: 11
+      chapter: 9
     fri: 
-      topic: "Classical Testing 2"
+      topic: "Parameter Inference 2"
       slides: ""
-      chapter: 11
+      chapter: 9
     hw: 7
 
   - weekno: ""
@@ -142,44 +143,44 @@ rows:
   
   - weekno: 2
     tut: 
-      topic: "Binomial Test, t-test (maybe ANOVA)"
+      topic: "Inference, computing Bayes rule"
       slides: ""
     wed: 
-      topic: "Classical Testing 3"
+      topic: "Classical Testing 1"
       slides: ""
-      chapter: 11
+      chapter: 10
     fri: 
-      topic: "Model Comparison"
+      topic: "Classical Testing 2"
       slides: ""
-      chapter: 12
+      chapter: 10
     hw: 8
 
   - weekno: 3
     tut: 
-      topic: "Model Comparison, Bayes Factors, LR Test, AIC"
+      topic: "Binomial tests, t-test, ANOVA etc."
       slides: ""
     wed: 
+      topic: "Model comparison"
+      slides: ""
+      chapter: 11
+    fri: 
       topic: "Bayesian Hypothesis Testing"
       slides: ""
       chapter: 13
-    fri: 
-      topic: "Model Criticism"
-      slides: ""
-      chapter: 14
     hw: 9
 
   - weekno: 4
     tut: 
-      topic: ""
+      topic: "Model Comparison, Bayes Factors, LR Test, AIC"
       slides: ""
     wed: 
-      topic: "Simple Linear Regression"
+      topic: "Model Criticism"
       slides: ""
-      chapter: -1
+      chapter: 13
     fri: 
-      topic: "Generalized Regression"
+      topic: "Simple linear regression"
       slides: ""
-      chapter: -1
+      chapter: 14
     hw: 10
 
   - weekno: 5
@@ -189,11 +190,11 @@ rows:
     wed: 
       topic: "Generalized Regression"
       slides: ""
-      chapter: -1
+      chapter: 16
     fri: 
       topic: "Hierarchical Regression"
       slides: ""
-      chapter: -1
+      chapter: 19
     hw: 11
   
   - weekno: 6
@@ -220,7 +221,7 @@ rows:
       slides: ""
       chapter: -1
     fri: 
-      topic: "TBA"
+      topic: "Tools in the trunk"
       slides: ""
       chapter: -1
     hw: -1
