@@ -108,7 +108,7 @@ rows:
       alert: true
     fri: 
       topic: "Models"
-      slides: ""
+      slides: "slides/08-models.pdf"
       chapter: 8
     hw: 6
 
