@@ -115,7 +115,7 @@ rows:
   - weekno: 51
     tut: 
       topic: "Probability calculus, models"
-      slides: ""
+      slides: "tutorials/Tutorial_6.zip"
     wed: 
       topic: "Parameter Inference 1"
       slides: ""
