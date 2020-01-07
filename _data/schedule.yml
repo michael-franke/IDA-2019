@@ -144,7 +144,7 @@ rows:
   - weekno: 2
     tut: 
       topic: "Inference, computing Bayes rule"
-      slides: ""
+      slides: "tutorials/Tutorial_7.zip"
     wed: 
       topic: "Classical Testing 1"
       slides: ""
