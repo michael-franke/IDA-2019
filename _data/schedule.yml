@@ -117,11 +117,11 @@ rows:
       topic: "Probability calculus, models"
       slides: "tutorials/Tutorial_6.zip"
     wed: 
-      topic: "Parameter Inference 1"
-      slides: ""
+      topic: "Parameter Estimation 1"
+      slides: "slides/09-estimation.pdf"
       chapter: 9
     fri: 
-      topic: "Parameter Inference 2"
+      topic: "Parameter Estimation 2"
       slides: ""
       chapter: 9
     hw: 7
