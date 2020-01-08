@@ -147,7 +147,7 @@ rows:
       slides: "tutorials/Tutorial_7.zip"
     wed: 
       topic: "Classical Testing 1"
-      slides: ""
+      slides: "slides/10-testing.pdf"
       chapter: 10
     fri: 
       topic: "Classical Testing 2"
@@ -157,35 +157,35 @@ rows:
 
   - weekno: 3
     tut: 
-      topic: "Binomial tests, t-test, ANOVA etc."
+      topic: "Classical Testing"
       slides: ""
     wed: 
-      topic: "Model comparison"
+      topic: "Classical Testing 3"
       slides: ""
       chapter: 11
     fri: 
-      topic: "Bayesian Hypothesis Testing"
+      topic: "Impact of Statistical Practices (by T. Roettger)"
       slides: ""
       chapter: 13
     hw: 9
 
   - weekno: 4
     tut: 
-      topic: "Model Comparison, Bayes Factors, LR Test, AIC"
+      topic: ""
       slides: ""
     wed: 
-      topic: "Model Criticism"
+      topic: "Model Comparison"
       slides: ""
       chapter: 13
     fri: 
-      topic: "Simple linear regression"
+      topic: "Bayesian Hypothesis Testing"
       slides: ""
       chapter: 14
     hw: 10
 
   - weekno: 5
     tut: 
-      topic: ""
+      topic: "Model Comparison, Bayes Factors, LR Test, AIC"
       slides: ""
     wed: 
       topic: "Generalized Regression"
