@@ -147,7 +147,7 @@ rows:
       slides: "tutorials/Tutorial_7.zip"
     wed: 
       topic: "Classical Testing 1"
-      slides: "slides/10-testing.pdf"
+      slides: "slides/10-testing-01.pdf"
       chapter: 10
     fri: 
       topic: "Classical Testing 2"
@@ -164,7 +164,7 @@ rows:
       slides: ""
       chapter: 11
     fri: 
-      topic: "Impact of Statistical Practices (by T. Roettger)"
+      topic: "Impact of Statistical Practices (T. Roettger)"
       slides: ""
       chapter: 13
     hw: 9
