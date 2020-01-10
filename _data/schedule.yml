@@ -151,7 +151,7 @@ rows:
       chapter: 10
     fri: 
       topic: "Classical Testing 2"
-      slides: ""
+      slides: "slides/10-testing-02.pdf"
       chapter: 10
     hw: 8
 
@@ -166,7 +166,7 @@ rows:
     fri: 
       topic: "Impact of Statistical Practices (T. Roettger)"
       slides: ""
-      chapter: 13
+      chapter: -1
     hw: 9
 
   - weekno: 4
