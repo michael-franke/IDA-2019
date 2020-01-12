@@ -516,21 +516,23 @@ plot_binomial(theta = 0.5, N = 24, highlight = c(7:16))</code></pre>
 <div id="exercise-2-pearsons-chi2-test-of-goodness-of-fit-20-points" class="section level1">
 <h1>Exercise 2: Pearson’s <span class="math inline">\(\chi^2\)</span>-test of goodness of fit (20 points)</h1>
 <p>The goal of this exercise is to make you feel comfortable with applying and interpreting the results of a Pearson <span class="math inline">\(\chi^2\)</span>-test of goodness of fit.</p>
-<p>Imagine you are on a funfair (German: Kirmes, Jahrmarkt). As usual, you head straight for the lottery booth (German: Losbude). The vendor adverises that of all tickets 5% are mega-winners, 15% are winners, 50% are consolation prizes (German: Trostpreise) and only the remaining 30% are draws (German: Nieten). You are your nerdy self, as usual, and you buy 40 tickets and count the number of tickets in each category. What you got is this:</p>
+<p>Imagine you are on a funfair (German: Kirmes, Jahrmarkt). As usual, you head straight for the lottery booth (German: Losbude). The vendor adverises that of all tickets 5% are mega-winners, 15% are winners, 15% are free rides on the fairy-go-round (German: Karussell), 35% are consolation prizes (German: Trostpreise) and only the remaining 30% are blanks (German: Nieten). You are your nerdy self, as usual, and you buy 50 tickets and count the number of tickets in each category. What you got is this:</p>
 <pre class="r"><code>n_obs &lt;- c(
   mega_winner = 1, # hurray!
-  winner = 3,
-  consolation = 17,
-  draws = 19
+  winner = 2,
+  free_ride = 10,
+  consolation = 18,
+  blank = 19
 )</code></pre>
 <div id="plot-data-and-prediction-10-points" class="section level2">
 <h2>Plot data and prediction (10 points)</h2>
 <p>The goal of this exercise is to further hone your plotting skills, this time also challenging you to come up with your own idea for a good visual presentation.</p>
-<p>Find an informative way of plotting the observed counts and the counts you would have expected to see when buying 40 tickets, which is this vector:</p>
+<p>Find an informative way of plotting the observed counts and the counts you would have expected to see when buying 40 tickets, which is this vector:<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <pre class="r"><code>expected &lt;- c(
   mega_winner = 5,
   winner = 15,
-  consolation = 50,
+  free_ride = 15,
+  consolation = 35,
   draws = 30
 ) * sum(n_obs) / 100</code></pre>
 </div>
@@ -576,6 +578,12 @@ plot_binomial(theta = 0.5, N = 24, highlight = c(7:16))</code></pre>
 <!-- It seems that $\theta = 0.5$ is not included in the 95% HDI. We might therefore want to say  -->
 <!-- ## Case 1: Manufacturer says: "$\theta = 0.8$" -->
 <!-- The manufacturer of a trick coin claims that their product has a bias of $\theta = 0.8$ of coming up heads on each toss. You make it your "research hypothesis" to find out whether this is true. Suppose you tossed the coin $N = 45$ times and you observed $k=42$ heads.  -->
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Notice that the Pearson <span class="math inline">\(\chi^2\)</span>-test rests on an approximation of normality, which is only sufficiently accurate if we have enough samples. A rule-of-thumb is that at most 20% of all cells should have expected frequencies below 5 in order for the test to be applicable.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
 
 
