@@ -36,10 +36,16 @@
   solution: ""
   due_date: 2019-12-20
   
-- title: Homework 6
+- title: Homework 7
   topic: "Estimation"
   url: homework/07-estimation.html
   solution: ""
-  due_date: 2020-01-10
+  due_date: 2020-01-13
+
+- title: Homework 8
+  topic: "Testing"
+  url: homework/08-testing-01.html
+  solution: ""
+  due_date: 2020-01-17
 
 
