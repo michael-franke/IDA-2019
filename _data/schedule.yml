@@ -161,7 +161,7 @@ rows:
       slides: ""
     wed: 
       topic: "Classical Testing 3"
-      slides: ""
+      slides: "slides/10-testing-03.pdf"
       chapter: 11
     fri: 
       topic: "Impact of Statistical Practices (T. Roettger)"
