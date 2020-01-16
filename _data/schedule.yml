@@ -158,7 +158,7 @@ rows:
   - weekno: 3
     tut: 
       topic: "Classical Testing"
-      slides: ""
+      slides: "tutorials/Tutorial08_Hypothesis_Testing_Nina_Tallulah.pdf"
     wed: 
       topic: "Classical Testing 3"
       slides: "slides/10-testing-03.pdf"
