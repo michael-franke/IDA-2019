@@ -171,8 +171,8 @@ rows:
 
   - weekno: 4
     tut: 
-      topic: ""
-      slides: ""
+      topic: "Hypothesis Testing"
+      slides: "tutorials/Tutorial_10.pdf"
     wed: 
       topic: "Model Comparison"
       slides: "slides/13-comparison.pdf"
