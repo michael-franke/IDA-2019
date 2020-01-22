@@ -175,7 +175,7 @@ rows:
       slides: ""
     wed: 
       topic: "Model Comparison"
-      slides: ""
+      slides: "slides/13-comparison.pdf"
       chapter: 13
     fri: 
       topic: "Bayesian Hypothesis Testing"
