@@ -172,7 +172,7 @@ rows:
   - weekno: 4
     tut: 
       topic: "Hypothesis Testing"
-      slides: "tutorials/Tutorial_10.pdf"
+      slides: "tutorials/Tutorial_09_Taher_and_Tallulah.pdf"
     wed: 
       topic: "Model Comparison"
       slides: "slides/13-comparison.pdf"
