@@ -188,13 +188,13 @@ rows:
       topic: "Model Comparison, Bayes Factors, LR Test, AIC"
       slides: ""
     wed: 
+      topic: "Simple Regression"
+      slides: "slides/15-linear-regression.pdf"
+      chapter: 15
+    fri: 
       topic: "Generalized Regression"
       slides: ""
       chapter: 16
-    fri: 
-      topic: "Hierarchical Regression"
-      slides: ""
-      chapter: 19
     hw: 11
   
   - weekno: 6
