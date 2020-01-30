@@ -143,7 +143,7 @@ rows:
   
   - weekno: 2
     tut: 
-      topic: "Inference, computing Bayes rule"
+      topic: "Parameter Estimation"
       slides: "tutorials/Tutorial_7.zip"
     wed: 
       topic: "Classical Testing 1"
@@ -186,7 +186,7 @@ rows:
   - weekno: 5
     tut: 
       topic: "Model Comparison, Bayes Factors, LR Test, AIC"
-      slides: ""
+      slides: "tutorials/Tutorial_10.zip"
     wed: 
       topic: "Generalized Regression"
       slides: ""
