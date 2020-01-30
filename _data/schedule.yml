@@ -185,7 +185,7 @@ rows:
 
   - weekno: 5
     tut: 
-      topic: "Model Comparison, Bayes Factors, LR Test, AIC"
+      topic: "Bayesian Hypothesis Testing"
       slides: "tutorials/Tutorial_10.zip"
     wed: 
       topic: "Simple Regression"
