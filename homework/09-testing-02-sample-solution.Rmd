@@ -1,0 +1,219 @@
+---
+title: 'HW 9: Hyptothesis testing (2)'
+author: ''
+date: "Due: Friday, January 17 by 11:59 CET"
+output: html_document
+---
+# Homework 9: Hypothesis Testing (Part 2)
+<!-- ## Correction: [INCLUDE NUMBER] points of [INCLUDE NUMBER] total points -->
+
+**Instructions**
+
+* Create an Rmd-file with the **matrikel number of each group member** (equivalent to StudIP group) in the 'author' heading and answer the following questions.
+* When all answers are ready, 'Knit' the document to produce a HTML file.
+* Create a ZIP archive called "IDA_HW9-Group-XYZ.zip" (where 'XYZ' is *your* group) containing:
+   * an R Markdown file "IDA_HW9-Group-XYZ.Rmd"
+   * a knitted HTML document "IDA_HW9-Group-XYZ.html"
+* Upload the ZIP archive on Stud.IP in your group folder before the deadline. You may upload as many times as you like before the deadline, only your final submission will count.
+* **Please do not suppress the code in the HTML-Output**
+* Include an R code chunk in your Rmarkdown file (the preamble) in which you set the following global options for the document, and set the options for this code chunk to `echo = F` (so as not to have it show up in your output):
+
+```{r echo=T}
+knitr::opts_chunk$set(
+  warning = FALSE, # supress warnings per default 
+  message = FALSE, # supress messages per default 
+  cache = TRUE     # caches results of computation unless the code changes
+)
+```
+
+* Load the package `tidyverse`.
+
+```{r echo=T}
+library(tidyverse)
+```
+
+# Exercise 1: Comparing two groups with a $t$-test (20 points)
+
+Here's test scores (say, from a language proficiency test) of two groups of students. Use a $t$-test to test whether there is a difference in means between these groups. Use a two-sided test, for unpaired samples, equal variance and equal sample size. Use the function `t.test` and interpret the results.
+
+```{r}
+group_1 <- c(
+  104, 105, 100, 91, 105, 118, 164, 168, 111, 107, 136, 149, 104, 114, 107, 95, 
+  83, 114, 171, 176, 117, 107, 108, 107, 119, 126, 105, 119, 107, 131
+)
+group_2 <- c(
+  133, 115, 84, 79, 127, 103, 109, 128, 127, 107, 94, 95, 90, 118, 124, 108, 
+  87, 111, 96, 89, 106, 121, 99, 86, 115, 136, 114
+)
+```
+
+```{r echo = T, eval = T}
+t.test(
+  group_1,
+  group_2,
+  paired =  F, 
+  mu = 0,
+  var.equal = T
+)
+```
+
+**Possible interpretation:** The result indicates a p-value smaller then 0.05. Thus, there is evidence against the null-hypothesis (H0: difference of means is equal to zero). That means in turn, that the higher average test score of group 1 (mu_x=118.9) compared to group 2 (mu_y=107.4) is most likely not due to chance.
+
+# Exercise 2: Pearson's $\chi^2$-test of independence (20 pointss)
+
+Here's a table of counts showing the results from an (imaginary) enquete asking students for the program in which they are enrolled and their favorite statistical paradigm. Use a $\chi^2$-test using function `chisq.test` to check if there is a basis for the assumption that preferences of statistical method differ between different fields of study.
+
+```{r}
+observed_counts <- matrix(
+  c(
+    31,56,23,
+    104,67,12,
+    24,34,42,
+    19,16,8
+  ),
+  nrow = 4,
+  byrow = T,
+  dimnames = list(
+    program = c("CogSci", "Psych", "Computer Science", "Philosophy"),
+    preference = c("frequentist", "Bayes", "bootstrap")
+    
+  )
+)
+
+observed_counts
+```
+
+```{r echo = T, eval = T}
+chisq.test(
+  observed_counts, 
+  correct = F # it's also fine to use the correction, but we didn't discuss this in class
+)
+```
+
+**Possible interpretation:** The null-hypothesis states that the variables "preference for statistical method" and "field of study" are independent of each other. The p-value indicates that there is evidence against the null-hypothesis and, thus, in favor of the alternative hypothesis: "preference for statistical method" and "field of study" seem to be dependent.  
+
+# Exercise 3: Understanding a mystery function (8 points)
+
+The point of this exercise is to practice a kind of task that may well occur in the written exam. [The secondary (cheeky) point of this exercise is to introduce a function that might just happen to be useful for some other thing.]
+
+Consider this function and try to understand what it does. 
+
+```{r}
+mysterious_function <- function(vec) {
+  map_lgl(
+    1:(length(vec)-1),
+    function(i) {vec[i] == vec[i+1]}
+  ) %>% sum()
+}
+```
+
+Describe what this function does in plain and easy natural language. For example, your answer could be something like the following (but if it was this particular answer, it would be ridiculously off the mark):
+
+> This function takes as input a vector of tibbles and returns the index of each tibble in the input vector which is longer than the tibble that occurs last in the input vector.
+
+**Possible answer:**
+The function takes a vector (vec) as input, "goes" through each entry of the vector and compares if two successive entries are identical. The output is then the number of successive identical "pairs" found in the input vector.
+
+# Exercise 4: Simulating a $p$-value for a custom-made test statistic (30 points)
+
+The point of this exercise is to make you understand better the notion of a test statistic and to become aware of the fact that *you* could just *invent* a test statistic to maximally address *your* specific problem or application. This exercise should also make you experience that it is possible to compute a $p$-value based on a test statistic for whose sampling distribution you cannot give a concise mathematical characterization (even if approximate).
+
+## Binomial test of fairness (4 points)
+
+We consider a binomial test of a coin's fairness. We have observed $k = 15$ heads out of $N = 30$ flips. Use the function `binomial.test` to calculate a two-sided $p$-value for the null hypothesis that $\theta = 0.5$. Interpret the result.
+
+```{r echo = T, eval = T}
+binom.test(15,30,0.5)
+# P-value is 1. There's absolutely no indication in the data that the null is false.
+```
+
+## Questioning independence based on swaps (4 points)
+
+The previous test addressed one aspect of our data: the number of heads in the $N = 30$ flips. Remember that we said in class that the number $k$ is a test statistic. It is a good one if what we want to get is information about $\theta$. 
+
+But there are many vectors of raw data with $N = 30$ that give us a value of test statistic $k = 15$. Here are three:
+
+```{r}
+obs_1 <- rep(c(1,0), each = 15)  # 15 ones followed by 15 zeros
+obs_2 <- rep(c(1,0), times = 15) # 15 pairs of one-zero
+obs_3 <- c(1,1,1,1,0,0,0,0,0,0,1,1,1,1,0,0,0,1,1,0,0,1,1,1,1,0,0,0,0,1)
+```
+
+We know that all of these observations will lead to the same outcome under a binomial test. But there is another feature of these raw data vectors that should concern us, and that is whether each observation was truly independent of the previous. (Notice that independence of each coin flip of any other is a fundamental assumption (which might just be wrong!) of the binomial test.)
+
+So, to address the independence issue, let's just come up with our own (*ad hoc*) test statistic. Let's just count the number of non-identical consecutive outcomes, i.e., the number of times that observation $i$ was different from observation $i+1$. Define a function called `number_of_swaps` that takes vectors like `obs_X` from above as input and returns the number of non-identical consecutive outcomes. Apply the function to the three vectors of observations above.
+
+```{r, echo = T}
+number_of_swaps <- function(vec) {
+  map_lgl(
+    1:(length(vec)-1),
+    function(i) {vec[i] != vec[i+1]} # changed to inequality
+  ) %>% sum()
+}
+
+number_of_swaps(obs_1)
+number_of_swaps(obs_2)
+number_of_swaps(obs_3)
+
+```
+
+## Approximating a sampling distribution via sampling (8 points)
+
+The number of swaps is a test statistic. (It is simple and useful, but no claim is made here regarding whether it is the best test statistic to address independence!) But what if we do not know a formula that characterizes its sampling distribution?
+
+The answer is: sampling! If we do not know a mathematical characterization of a distribution, but we can write an algorithm of the data-generating process, we can work with (a large set of) samples. (That's old news.) We can use samples to approximately calculate a $p$-value, too. (That's news (of sorts).)
+
+Write a function called `sample_no_swaps` that takes as input an argument `n_samples` specifying the number of samples to take, and that outputs the number of samples in a vector of 30 random samples from 1 and 0 (each equally likely). [Hint: to generate a single vector of the kind we are after, you can use this code snippet: `sample(c(1,0), size = 30, replace = T)`]
+
+```{r, echo = T}
+n_samples <- 1000
+sample_no_swaps <- function(n_samples = 1000) {
+  map_int(
+    1:n_samples,
+    function(i) {
+      sample(c(1,0), size = 30, replace = T) %>% 
+        number_of_swaps
+    }
+  )
+}
+```
+
+## Plot the sampling distribution (6 points)
+
+Using the previously defined function `sample_no_swaps`, get 100,000 samples of swaps, obtain counts for each number of swaps, and plot the result using `geom_col`. This could look as follows:
+
+```{r echo = T}
+tibble(
+  swaps = sample_no_swaps(100000)
+) %>% 
+  dplyr::count(swaps) %>% 
+  ggplot(aes(x = swaps, y = n)) +
+  geom_col()
+```
+
+## Compute a $p$-value with MC-sampling (8 points)
+
+Consider the vector $obs_3$ above. It's number of swaps is surprisingly low under our assumption of independence of flips. We want to approximate a one-sided $p$-value using MC-sampling. Fill in the missing bits-and-pieces in the code below, compute a $p$-value and interpret the result.
+
+```{r, echo = F, eval = F}
+n_samples <- 100000
+MC_sampling_p_value <- function(n_samples) {
+  %FILL-ME%(sample_no_swaps(n_samples) %FILL-ME% number_of_swaps(%FILL-ME%))
+}
+MC_sampling_p_value(n_samples)
+```
+
+
+```{r, echo = T, eval = T}
+n_samples <- 100000
+MC_sampling_p_value <- function(n_samples) {
+  mean(sample_no_swaps(n_samples) <= number_of_swaps(obs_3))
+}
+MC_sampling_p_value(n_samples)
+```
+
+**Possible answer:** The null-hypothesis assumes independence of each coin-toss outcome from the previous observation. As we find: the sampling distribution has it's peak around 15 swaps. Thus, 15 or more swaps suggest independence of observations. 
+
+The number_of_swaps for obs3 is very small (= 8 swaps). 
+
+Calculating the p-value, using obs3 as evidence and the sampling distribution, we get a significant result which suggests that the observations (of obs3) are dependent rather than independent (=> rejection of H0). 

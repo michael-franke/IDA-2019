@@ -1,0 +1,373 @@
+---
+title: 'HW 8: Hyptothesis testing (1)'
+author: ''
+date: "Due: Friday, January 17 by 11:59 CET"
+output: html_document
+---
+# Homework 8: Hypothesis Testing
+<!-- ## Correction: [INCLUDE NUMBER] points of [INCLUDE NUMBER] total points -->
+
+**Instructions**
+
+* Create an Rmd-file with the **matrikel number of each group member** (equivalent to StudIP group) in the 'author' heading and answer the following questions.
+* When all answers are ready, 'Knit' the document to produce a HTML file.
+* Create a ZIP archive called "IDA_HW8-Group-XYZ.zip" (where 'XYZ' is *your* group) containing:
+   * an R Markdown file "IDA_HW8-Group-XYZ.Rmd"
+   * a knitted HTML document "IDA_HW8-Group-XYZ.html"
+* Upload the ZIP archive on Stud.IP in your group folder before the deadline. You may upload as many times as you like before the deadline, only your final submission will count.
+* **Please do not suppress the code in the HTML-Output**
+* Include an R code chunk in your Rmarkdown file (the preamble) in which you set the following global options for the document, and set the options for this code chunk to `echo = F` (so as not to have it show up in your output):
+
+```{r echo=T}
+knitr::opts_chunk$set(
+  warning = FALSE, # supress warnings per default 
+  message = FALSE, # supress messages per default 
+  cache = TRUE     # caches results of computation unless the code changes
+)
+```
+
+* Load the package `tidyverse`.
+
+```{r echo=T}
+library(tidyverse)
+```
+
+
+# Exercise 1: Adressing hypotheses about coin flips with hypothesis testing (45 points)
+
+The goal of this exercise is to get experience in calculating $p$-values for different kinds of (directed and undirected) hypotheses. We use the (allegedly easiest) case of coin flips. We also would like to get more confident in how to report the results we obtain from our code.
+
+To obtain the right inuitions for $p$-values for directed and undirected hypotheses, you can use the function `plot_binomial` provided below. It allows you to plot the (binomial) sampling distribution and to specify which (if any) parts of the plot you want to highlight. It also calculates the total probability for all the values (of $k$) in the vector supplied to its argument `highlight`. The result of this calculation is shown in the plot's title. See the examples below to understand what the function does and how you can use it to develop better intuitions about $p$-values.
+
+```{r}
+plot_binomial <- function(theta, N, highlight = NULL) {
+  # put the data together
+  plotData <- tibble(x = 0:N, y = dbinom(0:N, N, theta))
+  # make a simple bar plot
+  out_plot <- ggplot(plotData, aes(x = x , y = y )) + 
+    geom_col(fill = "gray", width = 0.35) +
+    labs(
+      x = "test statistic k",
+      y =  str_c("Binomial(k, ", N, ", ", theta, ")")
+    )
+  # if given, highlight some bars in red
+  if (!is.null(highlight)) {
+    plotData2 = tibble(x = highlight, y = dbinom(highlight, N, theta))
+    out_plot <- out_plot + 
+      geom_col(
+        data = plotData2, 
+        aes(x = x, y = y), 
+        fill = "firebrick", 
+        width = 0.35
+      )  +
+      ggtitle(
+        str_c(
+          "Prob. selected values: ", 
+          sum(dbinom(highlight, N, theta)) %>% signif(5)
+          )
+        )
+  }
+  out_plot
+}
+plot_binomial(theta = 0.5, N = 24, highlight = c(7:16))
+plot_binomial(
+  theta = 0.5, 
+  N = 24, 
+  highlight = which(dbinom(0:24, 24,p=0.5) <= dbinom(7, 24,p=0.5))-1
+)
+```
+
+In the following, you will be confronted with different scenarios, each of which has a different research hypothesis. For each of these, think about what it is that you want to learn from a test based on a $p$-value. 
+For each scenario, you should therefore fix a suitable null hypothesis about the coin's bias. 
+Remember that a $p$-value quantifies evidence *against* the specified null-hypothesis (keeping an alternative hypothesis in the back of our minds to distinguish the case of genuinely testing a point-valued null hypothesis from the case of testing an interval-based null hypothesis via a single value used to generated the sampling distribution).
+You should therefore specify a null-hypothesis (and an alternative hypothesis) that is most conducive of sheddling light on your research question.
+(Once more, the goal of this exercise is for you to become more comfortable with the whole logic of using $p$-values to draw conclusions of interest for a research goal.)
+When asked to judge significance, please use a significance level of $\alpha = 0.05$.
+
+## Case 1: Manufacturer says: "$\theta = 0.8$" (20 points)
+
+The manufacturer of a trick coin claims that their product has a bias of $\theta = 0.8$ of coming up heads on each toss. You make it your "research hypothesis" to find out whether this is true. Suppose you tossed the coin $N = 45$ times and you observed $k=42$ heads. 
+
+### Fix the null-hypothesis (2 points)
+
+What null-hypothesis would you like to fix for a test that might shed light on your research question?  What is the alternative hypothesis?
+
+```{r, echo = T, eval = T}
+# We test $\theta = 0.8$. The alterantive is $\theta \neq 0.8$.
+```
+
+### Plot the sampling distribution (2 points)  
+
+Use the function `plot_binomial` to plot the sampling distribution for this null-hypothesis. Highlight a single value in this plot, namely the one for the observed value of the test statistic $k=42$. 
+
+```{r, echo = T, eval = T}
+plot_binomial(
+  theta = 0.8,
+  N = 45,
+  highlight = 42
+)
+```
+
+
+### More extreme values of $k$ (4 points)
+
+Given the reserch question, what values of $k$ would count as more extreme evidence against the chosen null-hypothesis? Use the function `plot_binomial` to plot the sampling distribution, but highlight all the values of $k$ that provide at least as strong evidence against the null-hypothesis as the observed data $k=42$ does.
+
+```{r, echo = T, eval = T}
+# All values of $k$ with that are at least as unlikely to occur under the null-hypothesis are at least as strong evidence against H_0.
+plot_binomial(
+  theta = 0.8,
+  N = 45,
+  highlight = which(dbinom(0:45, 45,p=0.8) <= dbinom(42,45,p=0.8))-1
+)
+```
+
+### One- or two-sided test? (2 points)
+
+Based on your answer to the previous question, is this a one-sided or a two-sided test?
+
+```{r, echo = T, eval =T}
+# This is a two-sided test.
+```
+
+
+### $p$-value (2 points)
+
+What is the $p$-value of this test?
+
+```{r, echo = T, eval =T}
+# This can be read of the title of the last plot. It's ~ 0.02389.
+```
+
+### Compare to built-in function (2 points)
+
+Use the built-in function `binom.test` to run that same test. (You should obtain the same $p$-value as what you answered in the previous question.)
+
+```{r, echo = T, eval =T}
+binom.test(42,45,0.8)
+```
+
+### Interpret and report your results (6 points)
+
+Give one or two concise sentences stating your results and the interpretation of them regarding your research hypothesis. An example (which is absurdly wrong!) could be:
+
+> We conducted a binomial test assuming the null-hypothesis that the coin is fair $\theta < 0.5$ and observed a sigificant test result ($N = 42$, $p \approx 1.2$). This means that we find overwhelming evidence in favor of the null-hypothesis. We therefore conclude that the coin is biased towards heads.
+
+```{r, echo = T, eval =T}
+# We conducted a two-sided binomial test assuming the null-hypothesis that the coin's bias is $\theta = 0.8$ and observed a sigificant test result ($N = 45$, $k=0.42$, $p \approx 0.02389$). This constitutes evidence against the manufacturer's claim that the coin's bias is exactly 0.8. 
+```
+
+## Case 2: Manufacturer says: "$\theta \le 0.3$" (20 points)
+
+The manufacturer of a trick coin claims that their product has a bias of $\theta \le 0.3$ of coming up heads on each toss. You make it your "research hypothesis" to find out whether this is true. Suppose you tossed the coin $N = 32$ times and you observed $k=15$ heads. 
+
+### Fix the null-hypothesis (2 points)
+
+What null-hypothesis would you like to fix for a test that might shed light on your research question? What is the alternative hypothesis?
+
+```{r, echo = T, eval = T}
+# We test $\theta = 0.3$. The alternative is that $\theta > 0.3$.
+```
+
+### Plot the sampling distribution (2 points)
+
+Use the function `plot_binomial` to plot the sampling distribution for this null-hypothesis. Highlight a single value in this plot, namely the one for the observed value of the test statistic $k=15$. 
+
+```{r, echo = T, eval = T}
+plot_binomial(
+  theta = 0.3,
+  N = 32,
+  highlight = 15
+)
+```
+
+
+### More extreme values of $k$ (4 points)
+
+Given the reserch question, what values of $k$ would count as more extreme evidence against the chosen null-hypothesis? Use the function `plot_binomial` to plot the sampling distribution, but highlight all the values of $k$ that provide at least as strong evidence against the null-hypothesis as the observed data $k=15$ does.
+
+```{r, echo = T, eval = T}
+# All values of $k$ with that are at least as unlikely to occur under the null-hypothesis are at least as strong evidence against H_0.
+plot_binomial(
+  theta = 0.3,
+  N = 32,
+  highlight = 15:32
+)
+```
+
+### One- or two-sided test? (2 points)
+
+Based on your answer to the previous question, is this a one-sided or a two-sided test?
+
+```{r, echo = T, eval =T}
+# This is a one-sided test.
+```
+
+### $p$-value (2 points)
+
+What is the $p$-value of this test?
+
+```{r, echo = T, eval =T}
+# This can be read of the title of the last plot. It's ~ 0.03272.
+```
+
+### Compare to built-in function (2 points)
+
+Use the built-in function `binom.test` to run that same test. (You should obtain the same $p$-value as what you answered in the previous question.)
+
+```{r, echo = T, eval =T}
+binom.test(15,32,0.3,alternative= "greater")
+```
+
+### Interpret and report your results (6 points)
+
+Give one or two concise sentences stating your results and the interpretation of them regarding your research hypothesis.
+
+```{r, echo = T, eval =T}
+# We conducted a binomial test assuming the null-hypothesis that the coin's bias is $\theta \le 0.3$ against the alternative hypothesis that the bias is larger and observed a sigificant test result ($N = 32$, $k=15$, $p \approx 0.06944$). This constitutes evidence against the manufacturer's claim that the coin's bias is no bigger than 0.3. 
+```
+
+
+## Case 3: Manufacturer says: "$\theta \ge 0.6$" (15 points)
+
+The manufacturer of a trick coin claims that their product has a bias of $\theta \ge 0.6$ of coming up heads on each toss. You make it your "research hypothesis" to find out whether this is true. Suppose you tossed the coin $N = 100$ times and you observed $k=53$ heads. 
+
+Use the built-in function `binom.test` to calculate a $p$-value for this case. (Use the previous steps for yourself if it helps you see through how to set this up.) State and interpret your results like you did in the last part of the previous cases.
+
+```{r, echo = T, eval =T}
+binom.test(53,100,0.6,alternative= "less")
+
+# We conducted a binomial test assuming the null-hypothesis that the coin's bias is $\theta \ge 0.6$ against the alternative hypothesis that the bias is lower. We obtained no significant test result ($N = 100$, $k=53$, $p \approx 0.09298$). We conclude that the data provide no compelling evidence against the manufacturer's claim that the coin's bias is at least 0.6. 
+```
+
+# Exercise 2: Pearson's $\chi^2$-test of goodness of fit (20 points)
+
+The goal of this exercise is to make you feel comfortable with applying and interpreting the results of a Pearson $\chi^2$-test of goodness of fit.
+
+Imagine you are on a funfair (German: Kirmes, Jahrmarkt). As usual, you head straight for the lottery booth (German: Losbude). The vendor advertises that of all tickets 5% are mega-winners, 15% are winners, 15% are free rides on the fairy-go-round (German: Karussell), 35% are consolation prizes (German: Trostpreise) and only the remaining 30% are blanks (German: Nieten). You are your nerdy self, as usual, and you buy 50 tickets and count the number of tickets in each category. What you got is this:
+
+```{r}
+n_obs <- c(
+  mega_winner = 1, # hurray!
+  winner = 2,
+  free_ride = 10,
+  consolation = 18,
+  blank = 19
+)
+```
+
+## Plot data and prediction (10 points)
+
+The goal of this exercise is to further hone your plotting skills, this time also challenging you to come up with your own idea for a good visual presentation.
+
+Find an informative way of plotting the observed counts and the counts you would have expected to see when buying 40 tickets, which is this vector:^[Notice that the Pearson $\chi^2$-test rests on an approximation of normality, which is only sufficiently accurate if we have enough samples. A rule-of-thumb is that at most 20% of all cells should have expected frequencies below 5 in order for the test to be applicable.]
+
+```{r}
+expected <- c(
+  mega_winner = 5,
+  winner = 15,
+  free_ride = 15,
+  consolation = 35,
+  draws = 30
+) * sum(n_obs) / 100
+```
+
+```{r, echo = T, eval = T}
+# many possibilities
+
+# data
+lottery_data <- tibble(
+  category = factor(c("mega_winner", "winner", "free_ride", "consolation", "blank"), ordered = T, levels = c("mega_winner", "winner", "free_ride", "consolation", "blank")),
+  observed = n_obs,
+  expected = expected
+) 
+
+# adjacent bars
+lottery_data %>% 
+  pivot_longer(2:3) %>% 
+  ggplot(
+    aes(x = category, y = value, fill = name)
+  ) + geom_col(position = "dodge")
+
+# scatter plot
+
+lottery_data %>% 
+  ggplot(aes(y = observed, x = expected)) +
+  geom_point() +
+  geom_abline(aes(slope = 1, intercept = 0), color = "firebrick") +
+  geom_label(aes(x = expected, y = observed + 1.25, label = category)) +
+  xlim(c(0,25)) + ylim(c(0,25))
+
+```
+
+## Test the vendor's claim (10 points)
+
+Use the built-in function `chisq.test` to test the vendor's claim about the probability of obtaining a ticket from each category based on the counts you observed. Interpret and report your findings like you would in a research report.
+
+```{r, eval = T, echo = T}
+chisq.test(n_obs, p = c(5,15,15,35,30)/100)
+
+# Short: non-significant result, we judge that there is no strong evidence against the vendor's claim
+```
+
+
+
+# Exercise 3: Some claims about frequentist testing (15 points)
+
+The goal of this exercise is to make you think deeply about some of the key notions we discussed in class, and how they might relate to each other. On top of this, this exercise is a good preparation towards the final exam, which is likely to contain some truth-value judgement questions similar to this exercise. (Caveat: This is not to say that the kinds of statements to occur in the exam will be or feel exactly like these; they might be easier or, by the time, more familiar.)
+
+For the following statements judge whether they are true or false. If you think that a case is somehow controversial, you can give one short sentence to justify your response.
+
+1. A $p$-value of $0.00615$ should be interpreted as implying that the probability that the null-hypothesis is true is below 1%. 
+**Possible answer:** False. In frequentist testing we assume that the null-hypothesis is true, thus, a p-value cannot say anything about the prob. the null-hypothesis is true.
+
+2. If we obtain a 95% confidence interval of $[0.2; 0.4]$ for a binomial test, then we know that a two-sided binomial test for the null hypothesis $\theta = 0.1$ will be statistically significant at the significance level $\alpha = 0.05$.
+**Possible answer:** This is true.
+
+3. If we obtain a significant test result for a two-sided binomial test for the null hypothesis $\theta = 0.1$, we know that the corresponding 95% CI for the observed data will include the value 0.1. 
+**Possible answer:** False. A significant result would suggest the rejection of the null-hypothesis (i.e., evidence against $\theta = 0.1$). This, in turn implies, that $\theta = 0.1$, should not be part of the CI, because then we could not reject the possibility, that $\theta$ may be 0.1, assuming $\alpha=0.05$.
+
+4. The Central Limit Theorem implies that a binomial distribution for large enough $N$ is closely approximated by a normal distribution, no matter what $\theta$ we are assuming.
+**Possible answer:** False. The CLT implies that the sampling distribution of the mean of the binomial distribution is approximated by a normal distribution for large enough $N$, no matter what $\theta$ we are assuming.
+
+5. If we obtain a significant test result at significance level $\alpha = 0.05$, then this means that when we repeat the exact same experiment we will find a significant result in at least 95% of the cases.
+**Possible answer:** True.
+
+
+<!-- # Exercise 2: Addressing hypotheses about coin flips with Bayes rule -->
+
+<!-- The goal of this exercise is to make you experience the differences between frequentist hypothesis testing and Bayesian posterior inference. The most important lesson of this comparison lies in the interpretation of the results. So please pay particular attention to the language that you use to interpret the formal results from frequentist testing and the language you use to describe a Bayesian test.  -->
+
+<!-- To recap Bayesian posterior inference, and to enlarge on how it can be used to test here's an example. Suppose we want to adress the research question whether a coin is fair, so $\theta = 0.5$. We start out with no knowledge of or biases regarding the coin's bias. We therefore assume a flat prior over $\theta$: $\theta \sim \text{Beta}(1,1)$. Remember that the Beta-distribution is the conjugate prior for the binomial likelihood function. So if we now observe $k=7$ heads out of $N=24$ flips, our posterior is described by $\theta \sim \text{Beta}(8,18)$, or more generally by $\theta \sim \text{Beta}(k+1, N-k+1)$. A simple Bayesian way of addressing whether the idea that $\theta = 0.5$ is tenable, given the data (and the model), is to look at whether that value lies inside the 95% credible interval of the posterior. Here is a function that computes this. (It is **not** necessary to understand this code.) -->
+
+<!-- ```{r, eval = F, echo = F} -->
+<!-- HDI_beta <- function(a, b, HDI_area = 0.95) { -->
+<!--   ignore_prob <- 1 - HDI_area -->
+<!--   width = function(lower_bound_pr, HDI_area) { -->
+<!--     qbeta(HDI_area + lower_bound_pr, a, b) - qbeta(lower_bound_pr, a, b ) -->
+<!--   } -->
+<!--   optInfo <- optimize( -->
+<!--     width, -->
+<!--     c(0, ignore_prob), -->
+<!--     HDI_area = HDI_area -->
+<!--   ) -->
+<!--   lower_bound_pr = optInfo$minimum -->
+<!--   return( c( lower_bound = qbeta(lower_bound_pr, a, b) , -->
+<!--              upper_bound = qbeta(HDI_area + lower_bound_pr, a, b) ) ) -->
+<!-- } -->
+<!-- ``` -->
+
+<!-- If we use this function to compute the 95% HDI for our posterior, we get: -->
+
+<!-- ```{r} -->
+<!-- HDI_beta(8,18) -->
+<!-- ``` -->
+
+<!-- It seems that $\theta = 0.5$ is not included in the 95% HDI. We might therefore want to say  -->
+
+
+<!-- ## Case 1: Manufacturer says: "$\theta = 0.8$" -->
+
+<!-- The manufacturer of a trick coin claims that their product has a bias of $\theta = 0.8$ of coming up heads on each toss. You make it your "research hypothesis" to find out whether this is true. Suppose you tossed the coin $N = 45$ times and you observed $k=42$ heads.  -->
+
+

@@ -45,19 +45,19 @@
 - title: Homework 8
   topic: "Testing"
   url: homework/08-testing-01.html
-  solution: ""
+  solution: "homework/08-testing-sample-solution.Rmd"
   due_date: 2020-01-17
 
 - title: Homework 9
   topic: "Testing 2"
   url: homework/09-testing-02.html
-  solution: ""
+  solution: "homework/09-testing-02-sample-solution.Rmd"
   due_date: 2020-01-27
 
 - title: Homework 10
   topic: "Bayesian testing"
   url: homework/10-testing-Bayes.html
-  solution: ""
+  solution: "homework/10-testing-Bayes-sample-solution.Rmd"
   due_date: 2020-01-31
 
 
